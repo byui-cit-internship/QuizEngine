@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-09-11T16:55:51.093Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" etag="7DJLdOTBnEbIA7j4Q6Vl" version="13.6.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2020-09-11T16:57:01.475Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" etag="LNq1Fm4bACtKx1qRG_3x" version="13.6.9" type="github" pages="2">
   <diagram name="HomePage" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
     <mxGraphModel dx="782" dy="458" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
@@ -19,11 +19,8 @@
         <mxCell id="4" value="" style="line;strokeWidth=1" parent="1" vertex="1">
           <mxGeometry x="20" y="90" width="780" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="5" value="Home" style="text;spacingTop=-5;" parent="1" vertex="1">
+        <mxCell id="5" value="Take A Quiz" style="text;spacingTop=-5;" parent="1" vertex="1">
           <mxGeometry x="20" y="70.00000000000009" width="30" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="6" value="About" style="text;spacingTop=-5;" parent="1" vertex="1">
-          <mxGeometry x="59.999999999999936" y="70.00000000000016" width="30" height="20" as="geometry" />
         </mxCell>
         <mxCell id="7" value="Associated blogs" style="text;spacingTop=-5;" parent="1" vertex="1">
           <mxGeometry x="459.9999999999999" y="70" width="30" height="20" as="geometry" />
