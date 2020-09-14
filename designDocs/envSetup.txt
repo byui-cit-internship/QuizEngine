@@ -1,0 +1,6 @@
+Install Node
+npm install -g express-generator
+npm install -g @vue/cli @vue/cli-service-global
+Set-ExecutionPolicy RemoteSigned
+vue ui
+
