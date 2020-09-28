@@ -1,4 +1,4 @@
-const PASS = process.env.MySqlPass;
+const PASS = process.env.MySqlPass
 module.exports = {
     HOST: "localhost",
     USER: "root",

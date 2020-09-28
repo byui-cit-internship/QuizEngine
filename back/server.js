@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({path: __dirname + '/.env'});
+
+console.log("password in server js :" + PASS)
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");

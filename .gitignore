@@ -2,3 +2,4 @@ node_modules
 back/node_modules
 back/config/*.env
 back/app/config/.env
+back/.env
