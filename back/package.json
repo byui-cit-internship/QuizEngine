@@ -4,7 +4,7 @@
   "description": "a test app using node, express, sqlize, and mysql for backend api consumption",
   "main": "server.js",
   "scripts": {
-    "install" : "echo $null >> /config/.env",
+    "install" : "echo $null >> \\config\\.env",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
