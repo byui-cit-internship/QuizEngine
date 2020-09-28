@@ -1,8 +1,5 @@
-npm install -g @vue/cli @vue/cli-service-global
-vue create quiz-engine
+npm install -g @vue/cli @vue/cli-service-global @vue/cli-init
 cd quiz-engine
-vue add express
-mkdir backend
 cd backend
 npm init
 npm i body-parser cors express
