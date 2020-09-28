@@ -1,4 +1,4 @@
-# front-tutorial
+# vue-js-2
 
 ## Project setup
 ```
