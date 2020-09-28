@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -9,7 +10,6 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 //set db and sync with it
 const db = require("./app/models");
 db.sequelize.sync({force: true}).then(()=> {
