@@ -12,7 +12,7 @@
           name="title"
         />
       </div>
-
+<!-- Form starts -->
       <div class="form-group">
         <label for="description">Description</label>
         <input
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+//We load the script from services
 import TutorialDataService from "../services/TutorialDataService";
 
 export default {
