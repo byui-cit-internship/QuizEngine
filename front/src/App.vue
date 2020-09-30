@@ -1,17 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a href="#" class="navbar-brand">bezKoder</a>
-      <div class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a href="/tutorials" class="nav-link">Tutorials</a>
-        </li>
-        <li class="nav-item">
-          <a href="/add" class="nav-link">Add</a>
-        </li>
-      </div>
-    </nav>
-
+    <Navbar></Navbar>
     <div class="container mt-3">
       <router-view />
     </div>
@@ -19,7 +8,12 @@
 </template>
 
 <script>
+import Navbar from "./components/Navbar";
+
 export default {
-  name: 'app'
-}
+  name: "app",
+  components: {
+    Navbar,
+  },
+};
 </script>
