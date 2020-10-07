@@ -1,14 +1,20 @@
 <template>
     <v-container fluid style="text-align:left">
-        <v-btn x-large v-text="btn1" block :to="quizlist">
+        <v-row style="height: 25px;">
+        </v-row>
+        <v-btn x-large height=250 v-text="btn1" block :to="quizlist">
         </v-btn>
+        <v-row style="height: 25px;">
+        </v-row>
             <v-spacer/>
             <v-divider/>
-        <v-btn x-large v-text="btn2" block :to="helloworld">
+        <v-btn x-large height=250  v-text="btn2" block :to="helloworld">
         </v-btn>
+        <v-row style="height: 25px;">
+        </v-row>
             <v-spacer/>
             <v-divider/>
-        <v-btn x-large v-text="btn3" block :to="helloworld">
+        <v-btn x-large height=250  v-text="btn3" block :to="helloworld">
         </v-btn>
 
     </v-container>
