@@ -15,9 +15,5 @@ export default {
     props: {
     quizitem:Object,
     },
-    data:()=> ({
-        quizitem:[
-      { id: 1, title: "Quiz 1", subject: "Database" }],
-    })
 }
 </script>
