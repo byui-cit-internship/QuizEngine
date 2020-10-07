@@ -13,7 +13,9 @@
 export default {
     name: "QuizListItem",
     props: {
-    quizitem:Object,
+    quizitem: {
+        type:Object
+    }
     },
 }
 </script>
