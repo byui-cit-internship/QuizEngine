@@ -16,6 +16,7 @@
           multiple
         ></v-autocomplete>
 
+<<<<<<< HEAD
         <!-- Displays Subject List Items based on Selected Subjects -->
         <v-subheader>Selected Subjects</v-subheader>
         <v-list-item v-for="subject in selectedSubjects" :key="subject.index">
@@ -28,13 +29,22 @@
           {{ quiz }}
         </v-list-item>
       </v-container>
+=======
+      <!-- TODO Show Filtered Quizzes based on Subject -->
+      <v-subheader>Quiz</v-subheader>
+      <v-list-item v-for="quiz in quizzes" :key="quiz.id">
+        {{quiz.title}}
+      </v-list-item>
+>>>>>>> 62da190f6c0d425323858da46e62b5d62ec1ea4b
     </v-card>
   </div>
 </template>
 
 <script>
+import QuizListItem from './QuizListItem'
 export default {
   name: "QuizList",
+  compnents: {QuizListItem},
   data: () => ({
     show: false,
     selectedSubjects: [],
