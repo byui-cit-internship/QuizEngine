@@ -31,7 +31,7 @@
       <!-- TODO Show Filtered Quizzes based on Subject -->
       <v-subheader>Quiz</v-subheader>
       <v-list-item v-for="quiz in quizzes" :key="quiz.id">
-        {{ quiz.title }}
+        <QuizListItem v-bind:quizitem='quiz'/>
       </v-list-item>
     </v-card>
   </div>
@@ -47,14 +47,14 @@ export default {
     selectedSubjects: [],
     filteredQuizzes: [],
     quizzes: [
-      { id: 1, title: "Quiz 1", subject: "Database" },
-      { id: 2, title: "Quiz 2", subject: "Database" },
-      { id: 3, title: "Quiz 3", subject: "Security" },
-      { id: 4, title: "Quiz 4", subject: "Security" },
-      { id: 5, title: "Quiz 5", subject: "Software Engineering" },
-      { id: 6, title: "Quiz 6", subject: "Software Engineering" },
-      { id: 7, title: "Quiz 7", subject: "Front End Engineering" },
-      { id: 8, title: "Quiz 8", subject: "Back End Engineering" },
+      { id: 1, title: "Quiz 1", subjects: ["Database", "Security"] },
+      { id: 2, title: "Quiz 2", subjects: ["Database", "Software Engineering"] },
+      { id: 3, title: "Quiz 3", subjects: ["Security", "Software Engineering"] },
+      { id: 4, title: "Quiz 4", subjects: ["Security", "Front End Engineering"] },
+      { id: 5, title: "Quiz 5", subjects: ["Security","Software Engineering"] },
+      { id: 6, title: "Quiz 6", subjects:  ["Software Engineering"] },
+      { id: 7, title: "Quiz 7", subjects:  ["Front End Engineering"] },
+      { id: 8, title: "Quiz 8", subjects:  ["Back End Engineering"] },
     ],
   }),
   methods: {},
