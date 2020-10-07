@@ -53,15 +53,17 @@
       <!-- TODO Show Filtered Quizzes based on Subject -->
       <v-subheader>Quiz</v-subheader>
       <v-list-item v-for="quiz in quizzes" :key="quiz.id">
-        {{ quiz.title }}
+        {{quiz.title}}
       </v-list-item>
     </v-card>
   </div>
 </template>
 
 <script>
+import QuizListItem from './QuizListItem'
 export default {
   name: "QuizList",
+  compnents: {QuizListItem},
   data: () => ({
     show: false,
     quizzes: [
