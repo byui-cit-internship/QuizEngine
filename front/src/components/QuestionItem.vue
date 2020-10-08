@@ -1,10 +1,16 @@
 <template>
-    <v-card>
-        <v-card-title v-text="question.body">
-        </v-card-title>
-        <AnswerItem v-for="answer in question.answers" :key="answer.index" v-bind:answer='answer'>
-        </AnswerItem>
-    </v-card>
+    <v-container>
+        <v-card>
+            <v-card-title v-text="question.body">
+            </v-card-title>
+        </v-card>
+
+        <v-card v-for="answer in question.answers" :key="answer.index">
+            <AnswerItem v-bind:answer='answer'>
+                {{answer.body}}
+            </AnswerItem>
+        </v-card>
+    </v-container>
 </template>
 
 <script>
