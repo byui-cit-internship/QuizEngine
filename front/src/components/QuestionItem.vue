@@ -1,12 +1,17 @@
 <template>
-    <AnswerItem>
-    </AnswerItem>
+    <v-card>
+        <v-card-title v-text="question.body">
+        </v-card-title>
+        <AnswerItem v-for="answer in question.answers" :key="answer.index" v-bind:answer='answer'>
+        </AnswerItem>
+    </v-card>
 </template>
 
 <script>
 import AnswerItem from "./AnswerItem";
 export default {
-    name: 'QuestionItem',
+   name: 'QuestionItem',
+   compnents: { AnswerItem },
   props: {
     question: {
       type: Object,

@@ -21,6 +21,11 @@ export default new Router({
       path: "/answertest",
       name: "answertest",
       component: () => import("./components/AnswerItem")
+    },
+    {
+      path: "/questiontest",
+      name: "qtest",
+      component: () => import("./components/QuestionItem")
     }
   ]
 });
