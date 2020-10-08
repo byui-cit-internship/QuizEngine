@@ -20,7 +20,7 @@ export default {
             {"id":2, "body":"q Test Answer 3"},
             ],
             "correctAnswers":[1],
-            },
+            }
            },
 }}}
 </script>
