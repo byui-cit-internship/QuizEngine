@@ -8,10 +8,12 @@
 export default {
   name: 'AnswerItem',
   props: {
-  	answer: {
+    answer: {
       type: Object,
-      default:{id:0, body:"This is a test answer and should not appear"},
-  	},
+      default(){
+        return{id:0, body:"This is a test answer and should not appear"}
+        },
+   },
   }
 }
 </script>

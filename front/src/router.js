@@ -18,9 +18,9 @@ export default new Router({
       component: () => import("./components/Home")
     },
     {
-      path: "/add",
-      name: "add",
-      component: () => import("./components/HelloWorld")
+      path: "/answertest",
+      name: "answertest",
+      component: () => import("./components/AnswerItem")
     }
   ]
 });
