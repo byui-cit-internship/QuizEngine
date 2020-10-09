@@ -7,7 +7,6 @@
 
         <v-card v-for="answer in question.answers" :key="answer.index">
             <AnswerItem v-bind:answer='answer'>
-                {{answer.body}}
             </AnswerItem>
         </v-card>
     </v-container>
