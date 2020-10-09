@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <v-app-bar app height="75px">
-      <v-btn icon class="ml-2">
+      <v-btn icon class="ml-2" :to="home">
         <v-icon>mdi-book</v-icon>
       </v-btn>
 
@@ -19,6 +19,10 @@
 <script>
 export default {
   name: "Navbar",
+  data:() => ({
+        //routing
+        home: "/home",
+    })
 };
 </script>
 
