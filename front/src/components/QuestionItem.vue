@@ -4,11 +4,20 @@
             <v-card-title v-text="question.body">
             </v-card-title>
         </v-card>
-
+        <v-col>
         <v-card v-for="answer in question.answers" :key="answer.index">
+            <v-col>
+                <v-card>
+                    <v-card-title v-text="key+1">
+                    </v-card-title>
+                </v-card>
+            </v-col>
+            <v-col>
             <AnswerItem v-bind:answer='answer'>
             </AnswerItem>
+            </v-col>
         </v-card>
+        </v-col>
     </v-container>
 </template>
 

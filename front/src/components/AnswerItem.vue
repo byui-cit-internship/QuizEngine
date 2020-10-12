@@ -1,7 +1,7 @@
 <template>
-    <v-card>
-        <v-card-title v-text="answer.body"/>
-    </v-card>
+    <v-btn v-text="answer.body">
+        <!-- <v-card-title v-text="answer.body"/> -->
+    </v-btn>
 </template>
 
 <script>

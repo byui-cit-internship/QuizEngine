@@ -31,7 +31,7 @@
       <!-- TODO Show Filtered Quizzes based on Subject -->
       <v-subheader>Quiz</v-subheader>
       <v-list-item v-for="quiz in quizzes" :key="quiz.id">
-        <QuizListItem v-bind:quizitem='quiz'/>
+        <QuizListItem v-bind:quizitem ='quiz'/>
       </v-list-item>
     </v-card>
   </div>
