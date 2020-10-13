@@ -5,10 +5,10 @@
             </v-card-title>
         </v-card>
         <v-col>
-        <v-card v-for="answer in question.answers" :key="answer.index">
+        <v-card v-for="(answer, index) in question.answers" :key="index">
             <v-col>
                 <v-card>
-                    <v-card-title v-text="key+1">
+                    <v-card-title v-text=answerLetters[index]>
                     </v-card-title>
                 </v-card>
             </v-col>
@@ -26,6 +26,15 @@ import AnswerItem from "./AnswerItem";
 export default {
    name: 'QuestionItem',
    compnents: { AnswerItem },
+    data: () => ({
+     "answerLetters": [
+  'A', 'B', 'C', 'D', 'E', 'F',
+  'G', 'H', 'I', 'J', 'K', 'L',
+  'M', 'N', 'O', 'P', 'Q', 'R',
+  'S', 'T', 'U', 'V', 'W', 'X',
+  'Y', 'Z'
+]
+ }),
   props: {
     question: {
       type: Object,
