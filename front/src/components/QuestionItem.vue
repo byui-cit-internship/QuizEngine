@@ -5,17 +5,10 @@
             </v-card-title>
         </v-card>
         <v-col>
-        <v-card v-for="(answer, index) in question.answers" :key="index">
-            <v-col>
-                <v-card>
-                    <v-card-title v-text=answerLetters[index]>
-                    </v-card-title>
-                </v-card>
-            </v-col>
-            <v-col>
-            <AnswerItem v-bind:answer='answer'>
+        <v-card flex v-for="(answer, index) in question.answers" :key="index">
+
+            <AnswerItem v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]'>
             </AnswerItem>
-            </v-col>
         </v-card>
         </v-col>
     </v-container>
