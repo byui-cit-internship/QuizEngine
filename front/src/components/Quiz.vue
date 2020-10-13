@@ -3,7 +3,7 @@
         <!-- Main Body -->
         <v-container>
             <v-card >
-                <QuestionItem v-bind:question="currQuestion">
+                <QuestionItem v-bind:question="quiz.questions[currPage]">
                 </QuestionItem>
             </v-card>
         </v-container>
@@ -18,8 +18,6 @@
 import QuestionItem from "./QuestionItem";
 export default {
    name: 'QuizItem',
-   currPage:0,
-   currQuestion:(quiz.questions[currPage]),
    compnents: { QuestionItem },
   props: {
     quiz: {
@@ -38,5 +36,6 @@ export default {
             }
 
            },
-}}}
+},
+}}
 </script>
