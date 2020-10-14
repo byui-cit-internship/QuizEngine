@@ -3,13 +3,14 @@
         <!-- Main Body -->
         <v-container>
             <v-card >
-                <QuestionItem v-bind:question="quiz.questions[currPage]">
+                <QuestionItem v-bind:question="currentQuestion">
                 </QuestionItem>
             </v-card>
         </v-container>
         <!-- Navigation -->
-        <v-pagination>
-        </v-pagination>
+        <button v-on:click="getNextPage">testButton</button>
+        <v-btn-toggle v-on:click.native=getPreviousPage; storeSelectedAnswers >Previous</v-btn-toggle>
+        <v-btn-toggle v-on:click.native=getNextPage >Next</v-btn-toggle>
     </v-container>
 </template>
 
@@ -18,7 +19,17 @@
 import QuestionItem from "./QuestionItem";
 export default {
    name: 'QuizItem',
-   compnents: { QuestionItem },
+   components: { QuestionItem },
+      data: () => ({
+       currPage: 0,
+       selectedAnswers: {},
+   }),
+   computed: {
+       currentQuestion()
+       {
+           return this.quiz.questions[this.currPage]   
+       }
+   },
   props: {
     quiz: {
       type: Object,
@@ -37,5 +48,25 @@ export default {
 
            },
 },
-}}
+
+},
+methods:{
+    getPreviousPage: function()
+    {
+        this.currPage--;
+    },
+    getNextPage: function()
+    {
+        this.currPage++;
+    },
+    storeSelectedAnswers(answerId, QuestionId)
+    {
+        temp = {
+            "questionId": QuestionId,
+            "selected": answerId
+        };
+        this.selectedAnswers.append(temp);
+    }
+}
+}
 </script>

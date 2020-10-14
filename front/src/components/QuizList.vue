@@ -24,14 +24,14 @@
 
         <!-- TODO Show Filtered Quizzes based on Subject (Dynamic List Rendering) -->
         <v-subheader>Quiz</v-subheader>
-        <v-list-item v-for="quiz in filteredQuizzes" :key="quiz.index">
+        <v-list-item v-for="quiz in getFilteredQuizzes" :key="quiz.index">
           {{ quiz }}
         </v-list-item>
       </v-container>
       <!-- TODO Show Filtered Quizzes based on Subject -->
       <v-subheader>Quiz</v-subheader>
       <v-list-item v-for="quiz in quizzes" :key="quiz.id">
-        <QuizListItem v-bind:quizitem ='quiz'/>
+        <QuizListItem v-bind:quizitem="quiz" />
       </v-list-item>
     </v-card>
   </div>
@@ -41,49 +41,81 @@
 import QuizListItem from "./QuizListItem";
 export default {
   name: "QuizList",
-  compnents: { QuizListItem },
+  components: { QuizListItem },
   data: () => ({
     show: false,
     selectedSubjects: [],
     filteredQuizzes: [],
     quizzes: [
       { id: 1, title: "Quiz 1", subjects: ["Database", "Security"] },
-      { id: 2, title: "Quiz 2", subjects: ["Database", "Software Engineering"] },
-      { id: 3, title: "Quiz 3", subjects: ["Security", "Software Engineering"] },
-      { id: 4, title: "Quiz 4", subjects: ["Security", "Front End Engineering"] },
-      { id: 5, title: "Quiz 5", subjects: ["Security","Software Engineering"] },
-      { id: 6, title: "Quiz 6", subjects:  ["Software Engineering"] },
-      { id: 7, title: "Quiz 7", subjects:  ["Front End Engineering"] },
-      { id: 8, title: "Quiz 8", subjects:  ["Back End Engineering"] },
+      {
+        id: 2,
+        title: "Quiz 2",
+        subjects: ["Database", "Software Engineering"],
+      },
+      {
+        id: 3,
+        title: "Quiz 3",
+        subjects: ["Security", "Software Engineering"],
+      },
+      {
+        id: 4,
+        title: "Quiz 4", 
+        subjects: ["Security", "Front End Engineering"],
+      },
+      {
+        id: 5,
+        title: "Quiz 5",
+        subjects: ["Security", "Software Engineering"],
+      },
+      { id: 6, title: "Quiz 6", subjects: ["Software Engineering"] },
+      { id: 7, title: "Quiz 7", subjects: ["Front End Engineering"] },
+      { id: 8, title: "Quiz 8", subjects: ["Back End Engineering"] },
     ],
   }),
-  methods: {},
-
-  computed: {
-    getUniqueSubjects() {
-      let array = this.quizzes.map((a) => a.subject);
-      //Only unique values allowed in ES6 Set. Way of filtering out non-unique values
-      let uniqueSubjects = Array.from(new Set(array)).sort();
-      return uniqueSubjects;
-    },
-
+  methods: {
     clearFilteredList() {
       let filteredQuizzes = this.filteredQuizzes;
       filteredQuizzes = [];
       return filteredQuizzes;
     },
+  },
+
+  computed: {
+    // getUniqueSubjectsv2() {
+    //    foreach subject in quizzes.subjects;
+    // }
+    getUniqueSubjects() {
+      let array = this.quizzes.map((a) => a.subjects);
+      array = array.join().split(",");
+      //Only unique values allowed in ES6 Set. Way of filtering out non-unique values
+      let uniqueSubjects = Array.from(new Set(array)).sort();
+      return uniqueSubjects;
+    },
+
+    //MOVE TO METHODS
 
     getFilteredQuizzes() {
       // for each quiz in quizzes, if quiz.id is in any of selected subjects array, push quiz.title to selected quizzes array
       // TODO How to handle event of new subject being selected
 
-      this.clearFilteredList;
+      this.clearFilteredList();
       let selectedSubjects = this.selectedSubjects;
       let filteredQuizzes = this.filteredQuizzes;
-      this.quizzes.forEach((element) => {
-        if (element.subject.includes(selectedSubjects)) {
-          filteredQuizzes.push(element.title);
-        }
+      // this.quizzes.forEach((element) => {
+      // if (element.subjects.includes(selectedSubjects)) {
+      // filteredQuizzes.push(element.title);
+      // }
+      // });
+      filteredQuizzes = this.quizzes.filter((quiz) => {
+        let keep = false;
+        // subjects is an array, and selectedSubjects is also an array, so we need to loop through one or the other before we can use includes
+        quiz.subjects.forEach((subject) => {
+          if (selectedSubjects.includes(subject)) {
+            keep = true;
+          }
+        });
+        return keep;
       });
       return filteredQuizzes;
     },
@@ -92,5 +124,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>
+<style scoped></style>

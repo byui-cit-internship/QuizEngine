@@ -7,7 +7,7 @@
         <v-col>
         <v-card v-for="(answer, index) in question.answers" :key="index">
 
-            <AnswerItem v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]'>
+            <AnswerItem v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' >
             </AnswerItem>
         </v-card>
         </v-col>
