@@ -9,8 +9,8 @@
         </v-container>
         <!-- Navigation -->
         <button v-on:click="getNextPage">testButton</button>
-        <v-btn-toggle v-on:click.native=getPreviousPage; storeSelectedAnswers >Previous</v-btn-toggle>
-        <v-btn-toggle v-on:click.native=getNextPage >Next</v-btn-toggle>
+        <v-btn v-on:click.native=getPreviousPage>Previous</v-btn>
+        <v-btn v-on:click.native=getNextPage >Next</v-btn>
     </v-container>
 </template>
 
@@ -61,7 +61,7 @@ methods:{
     },
     storeSelectedAnswers(answerId, QuestionId)
     {
-        temp = {
+        var temp = {
             "questionId": QuestionId,
             "selected": answerId
         };

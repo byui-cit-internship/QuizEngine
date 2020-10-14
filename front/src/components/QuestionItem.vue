@@ -1,16 +1,21 @@
 <template>
     <v-container>
         <v-card>
-            <v-card-title v-text="question.body">
+            <v-card-title v-text="question.body" z-index:4>
             </v-card-title>
         </v-card>
+        <v-btn-toggle tile>
         <v-col>
+        
         <v-card v-for="(answer, index) in question.answers" :key="index">
-
+            
             <AnswerItem v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' >
             </AnswerItem>
+            
         </v-card>
+
         </v-col>
+        </v-btn-toggle>
     </v-container>
 </template>
 
@@ -18,7 +23,7 @@
 import AnswerItem from "./AnswerItem";
 export default {
    name: 'QuestionItem',
-   compnents: { AnswerItem },
+   components: { AnswerItem },
     data: () => ({
      "answerLetters": [
   'A', 'B', 'C', 'D', 'E', 'F',
