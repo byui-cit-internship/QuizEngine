@@ -35,9 +35,10 @@ export default {
    },
   methods: {
     init() {
-      var tagName = this.answerLetter + "answer";
-      document.getElementsByTagName("answer")[0].setAttribute("name", tagName)
-      document.getElementsByTagName(tagName)[0].setAttribute("value", this.answer.id)
+      //var tagName = this.answer.id + "answer";
+      //document.getElementsByTagName("answer")[0].setAttribute("name", tagName)
+      document.getElementsByTagName("answer")[0].setAttribute("value", this.answer.id)
+      console.log("currentId is " + this.answer.id)
     }
   }
 }

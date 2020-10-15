@@ -13,7 +13,7 @@
             </AnswerItem>
             
         </v-card>
-        <v-card>{{answer_toggle}}</v-card>
+        <v-card>Current Answer Id: {{answer_toggle}}</v-card>
 
         </v-col>
         </v-btn-toggle>
@@ -59,7 +59,8 @@ export default {
         },
         init()
         {
-            document.getElementsByTagName("btnToggle")[0].setAttribute("active-class", null)
+            
+            document.getElementsByTagName("btnToggle")[0].setAttribute("value",null)
             this.answer_toggle = null
         }
     },
