@@ -1,5 +1,5 @@
 <template>
-    <v-btn v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" ref="answerbtn" >
+    <v-btn v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
         <!-- <v-card-title v-text="answer.body"/> -->
     </v-btn>
 </template>
