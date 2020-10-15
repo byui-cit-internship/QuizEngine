@@ -8,6 +8,7 @@
 export default {
   name: 'AnswerItem',
   created: function () {
+    this.$refs.answerbtn.value=this.answer.id
     this.init()
   },
   props: {
@@ -38,7 +39,7 @@ export default {
    },
    computed: {
      value(){
-       return this.answer.id
+       return 0
      }
    },
   methods: {
@@ -49,7 +50,7 @@ export default {
       //document.getElementsByTagName("answerBTN")[0].setAttribute("value", this.answer.id)
       //var value = answer.id
       console.log("currentId is " + this.answer.id + " " + this.id)
-      this.$refs.answerbtn.value = this.value
+
     }
   }
 }
