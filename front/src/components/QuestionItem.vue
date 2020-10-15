@@ -6,7 +6,8 @@
         </v-card>
         <v-btn-toggle v-model="answer_toggle" name="btnToggle">
         <v-col>
-        
+
+        <v-row><v-spacer/></v-row>
         <v-card v-for="(answer, index) in question.answers" :key="index">
             
             <AnswerItem v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' >
