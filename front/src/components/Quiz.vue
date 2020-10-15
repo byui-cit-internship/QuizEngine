@@ -65,10 +65,13 @@ methods:{
     {
         this.currPage--;
         this.$refs.questionObj.answer_toggle = -1
+        this.storeSelectedAnswers(this.currentQuestion.id)
     },
     getNextPage: function()
     {
         this.currPage++;
+        this.$refs.questionObj.answer_toggle = -1
+        this.storeSelectedAnswers(this.currentQuestion.id)
     },
     storeSelectedAnswers(QuestionId)
     {
