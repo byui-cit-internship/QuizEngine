@@ -10,7 +10,7 @@
         <!-- Navigation -->
         <button v-on:click="getNextPage">testButton</button>
         <v-btn v-on:click.native=getPreviousPage>Previous</v-btn>
-        <v-btn v-on:click.native=getNextPage >Next</v-btn>
+        <v-btn v-on:click.native=getNextPage>Next</v-btn>
     </v-container>
 </template>
 
@@ -20,9 +20,14 @@ import QuestionItem from "./QuestionItem";
 export default {
    name: 'QuizItem',
    components: { QuestionItem },
+   created: {
+       function () {
+           this.QuestionItem.init()
+       }
+   },
       data: () => ({
-       currPage: 0,
-       selectedAnswers: {},
+            currPage: 0,
+            selectedAnswers: {},
    }),
    computed: {
        currentQuestion()
@@ -51,6 +56,9 @@ export default {
 
 },
 methods:{
+    init() {
+        this.QuestionItem.init()
+    },
     getPreviousPage: function()
     {
         this.currPage--;
@@ -59,8 +67,9 @@ methods:{
     {
         this.currPage++;
     },
-    storeSelectedAnswers(answerId, QuestionId)
+    storeSelectedAnswers(QuestionId)
     {
+        var answerId = this.$refs.QuestionItem.answer_toggle.value;
         var temp = {
             "questionId": QuestionId,
             "selected": answerId

@@ -4,7 +4,7 @@
             <v-card-title v-text="question.body" z-index:4>
             </v-card-title>
         </v-card>
-        <v-btn-toggle tile>
+        <v-btn-toggle v-model="answer_toggle" name="btnToggle">
         <v-col>
         
         <v-card v-for="(answer, index) in question.answers" :key="index">
@@ -13,6 +13,7 @@
             </AnswerItem>
             
         </v-card>
+        <v-card>{{answer_toggle}}</v-card>
 
         </v-col>
         </v-btn-toggle>
@@ -31,7 +32,9 @@ export default {
   'M', 'N', 'O', 'P', 'Q', 'R',
   'S', 'T', 'U', 'V', 'W', 'X',
   'Y', 'Z'
-]
+],
+    answer_toggle: null,
+
  }),
   props: {
     question: {
@@ -48,5 +51,22 @@ export default {
             "correctAnswers":[1],
             }
            },
-}}}
+}},
+    methods :{
+        resetActiveAnswers()
+        {
+            this.answer_toggle = null;
+        },
+        init()
+        {
+            document.getElementsByTagName("btnToggle")[0].setAttribute("active-class", null)
+            this.answer_toggle = null
+        }
+    },
+    created: {
+        function() {
+            this.init()
+        }
+    }
+}
 </script>
