@@ -1,5 +1,5 @@
 <template>
-    <v-btn v-text="answerLetter + answerLetterSpace + answer.body" name="answer" >
+    <v-btn v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" >
         <!-- <v-card-title v-text="answer.body"/> -->
     </v-btn>
 </template>
@@ -32,13 +32,17 @@ export default {
   },
     data: function(){
       this.init()
+      return {
+        id: 0
+      }
    },
   methods: {
     init() {
+      //this.answerBtn.value = this.answer.id
       //var tagName = this.answer.id + "answer";
       //document.getElementsByTagName("answer")[0].setAttribute("name", tagName)
-      document.getElementsByTagName("answer")[0].setAttribute("value", this.answer.id)
-      console.log("currentId is " + this.answer.id)
+      //document.getElementsByTagName("answerBTN")[0].setAttribute("value", this.answer.id)
+      console.log("currentId is " + this.answer.id + " " + this.id)
     }
   }
 }

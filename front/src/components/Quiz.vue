@@ -23,10 +23,8 @@ import QuestionItem from "./QuestionItem";
 export default {
    name: 'QuizItem',
    components: { QuestionItem },
-   created: {
-       function () {
-           this.QuestionItem.init()
-       }
+   created() {
+        this.init()
    },
       data: () => ({
             currPage: 0,

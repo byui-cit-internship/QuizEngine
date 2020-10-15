@@ -60,14 +60,12 @@ export default {
         init()
         {
             
-            document.getElementsByTagName("btnToggle")[0].setAttribute("value",null)
+            //document.getElementsByTagName("btnToggle")[0].setAttribute("value",null)
             this.answer_toggle = null
         }
     },
-    created: {
-        function() {
+    created() {
             this.init()
         }
-    }
 }
 </script>
