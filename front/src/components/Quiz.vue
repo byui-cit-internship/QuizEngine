@@ -58,7 +58,8 @@ export default {
 },
 methods:{
     init() {
-        this.QuestionItem.init()
+        console.log("entering quiz init")
+        // this.QuestionItem.init()
     },
     getPreviousPage: function()
     {
