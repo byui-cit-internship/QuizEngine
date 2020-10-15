@@ -3,7 +3,7 @@
         <!-- Main Body -->
         <v-container>
             <v-card >
-                <QuestionItem v-bind:question="currentQuestion">
+                <QuestionItem v-bind:question="currentQuestion" ref="questionObj">
                 </QuestionItem>
             </v-card>
             <v-card>
@@ -64,6 +64,7 @@ methods:{
     getPreviousPage: function()
     {
         this.currPage--;
+        this.$refs.questionObj.answer_toggle = -1
     },
     getNextPage: function()
     {

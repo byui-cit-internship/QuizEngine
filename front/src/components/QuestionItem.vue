@@ -56,13 +56,13 @@ export default {
     methods :{
         resetActiveAnswers()
         {
-            this.answer_toggle = null;
+            this.answer_toggle = -1;
         },
         init()
         {
             
             //document.getElementsByTagName("btnToggle")[0].setAttribute("value",null)
-            this.answer_toggle = null
+            this.answer_toggle = -1
         }
     },
     created() {
