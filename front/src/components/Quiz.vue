@@ -12,8 +12,8 @@
         </v-container>
         <!-- Navigation -->
         <button v-on:click="getNextPage">testButton</button>
-        <v-btn v-on:click.native=getPreviousPage>Previous</v-btn>
-        <v-btn v-on:click.native=getNextPage>Next</v-btn>
+        <v-btn v-show="previous" v-on:click.native=getPreviousPage>Previous</v-btn>
+        <v-btn v-show="next" v-on:click.native=getNextPage>Next</v-btn>
     </v-container>
 </template>
 
@@ -35,7 +35,27 @@ export default {
        currentQuestion()
        {
            return this.quiz.questions[this.currPage]   
-       }
+       },
+       previous ()
+       {
+           if (this.currPage >= 1) {
+               return true
+           }
+           else{
+               return false
+           }
+
+       },
+        next ()
+       {
+           if (this.currPage > (this.quiz.questions.length - 2)) {
+               return false
+           }
+           else {
+               return true
+           }
+
+       },
    },
   props: {
     quiz: {
@@ -55,6 +75,22 @@ export default {
 
            },
 },
+    // previous : {
+    //     type: Object,
+    //     default () {
+    //         return {
+    //             isVisible: true
+    //         }
+    //     }
+    // },
+    // next : {
+    //     type: Object,
+    //     default () {
+    //         return {
+    //             isVisible: true
+    //         }
+    //     }
+    // },
 
 },
 methods:{
@@ -65,14 +101,38 @@ methods:{
     getPreviousPage: function()
     {
         this.currPage--;
+        if (this.$refs.questionObj.answer_toggle != -1)
+        {
+            this.storeSelectedAnswers(this.currentQuestion.id)
+        }
+
         this.$refs.questionObj.answer_toggle = -1
-        this.storeSelectedAnswers(this.currentQuestion.id)
+
     },
     getNextPage: function()
     {
         this.currPage++;
+        if (this.$refs.questionObj.answer_toggle != -1)
+        {
+            this.storeSelectedAnswers(this.currentQuestion.id)
+        }
         this.$refs.questionObj.answer_toggle = -1
-        this.storeSelectedAnswers(this.currentQuestion.id)
+
+    },
+    setAnswerToggle()
+    {
+        //GET THE current question id
+        var qid = this.currentQuestion.id
+        //search selected answers for the question id
+        for (idx, response in this.selectedAnswers)
+        {
+            if (response.questionId == qid)
+            {
+                
+            }
+        }
+        //if found set answer toggle to the selected answer for that item
+        //if its not found set answer toggle to negative 1
     },
     setSelectedAnswer(answer_toggle)
     {
