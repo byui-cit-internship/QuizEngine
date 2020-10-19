@@ -58,19 +58,21 @@ export default {
            }
 
        },
-       prevQuestionId:
+       prevQuestionId()
        {
-           get() {
-               return this.prevqid
-           },
-           set(qid) {this.prevqid=qid}
+           return this.quiz.questions[this.currPage - 1].id
        },
-       nextQuestionId:
+       nextQuestionId()
        {
-           get() {
-               return this.nextqid
-           },
-           set(qid) {this.nextqid=qid}
+           if (this.quiz.questions.length <= this.currPage + 1)
+           {
+               return this.quiz.questions[this.currPage + 1].id
+           }
+           else
+           {
+               return this.quiz.questions[this.currPage + 1].id
+           }
+           
        }
    },
   props: {
@@ -116,7 +118,7 @@ methods:{
     },
     getPreviousPage: function()
     {
-        this.nextQuestionId = this.currentQuestion.id        
+        console.log("setting nextqid to:" + this.nextQuestionId)     
         if (this.$refs.questionObj.answer_toggle != -1)
         {
             this.storeSelectedAnswers(this.currentQuestion.id)
@@ -130,7 +132,6 @@ methods:{
     },
     getNextPage: function()
     {
-        this.prevQuestionId = this.currentQuestion.id
         if (this.$refs.questionObj.answer_toggle != -1)
         {
             this.storeSelectedAnswers(this.currentQuestion.id)
@@ -145,6 +146,7 @@ methods:{
         //GET THE current question id
         //var qid = this.currentQuestion.id
         //search selected answers for the question id
+        console.log("testing qid:" + qid)
         this.$refs.questionObj.answer_toggle = -1
         this.selectedAnswers.forEach((response)=>{
             if (response.questionId == qid)
