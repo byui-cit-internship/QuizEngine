@@ -29,7 +29,9 @@ export default {
     data: () => ({
             currPage: 0,
             selectedAnswers: [],
-            selectedAnswer: -1
+            selectedAnswer: -1,
+            prevqid: -1,
+            nextqid: -1
    }),
    computed: {
        currentQuestion()
@@ -56,6 +58,20 @@ export default {
            }
 
        },
+       prevQuestionId:
+       {
+           get() {
+               return this.prevqid
+           },
+           set(qid) {this.prevqid=qid}
+       },
+       nextQuestionId:
+       {
+           get() {
+               return this.nextqid
+           },
+           set(qid) {this.nextqid=qid}
+       }
    },
   props: {
     quiz: {
@@ -100,37 +116,47 @@ methods:{
     },
     getPreviousPage: function()
     {
-        this.currPage--;
+        this.nextQuestionId = this.currentQuestion.id        
         if (this.$refs.questionObj.answer_toggle != -1)
         {
             this.storeSelectedAnswers(this.currentQuestion.id)
         }
+        this.$refs.questionObj.answer_toggle = -1 
 
-        this.$refs.questionObj.answer_toggle = -1
+        this.setAnswerToggle(this.prevQuestionId)
+        this.currPage--;
+
 
     },
     getNextPage: function()
     {
-        this.currPage++;
+        this.prevQuestionId = this.currentQuestion.id
         if (this.$refs.questionObj.answer_toggle != -1)
         {
             this.storeSelectedAnswers(this.currentQuestion.id)
         }
         this.$refs.questionObj.answer_toggle = -1
 
+        this.setAnswerToggle(this.nextQuestionId)
+        this.currPage++;
     },
-    setAnswerToggle()
+    setAnswerToggle(qid)
     {
         //GET THE current question id
-        var qid = this.currentQuestion.id
+        //var qid = this.currentQuestion.id
         //search selected answers for the question id
-        for (idx, response in this.selectedAnswers)
-        {
+        this.$refs.questionObj.answer_toggle = -1
+        this.selectedAnswers.forEach((response)=>{
             if (response.questionId == qid)
             {
-                
+                console.log(response)
+                this.$refs.questionObj.answer_toggle = response.selected
             }
-        }
+            else{
+                this.$refs.questionObj.answer_toggle = -1
+
+            }
+        })
         //if found set answer toggle to the selected answer for that item
         //if its not found set answer toggle to negative 1
     },
@@ -140,12 +166,32 @@ methods:{
     },
     storeSelectedAnswers(QuestionId)
     {
-        var answerId = this.$refs.questionObj.answer_toggle;
+        var answerId = this.$refs.questionObj.answer_toggle
         var temp = {
             "questionId": QuestionId,
             "selected": answerId
-        };
-        this.selectedAnswers.push(temp);
+        }
+        if (this.selectedAnswers.length > 0)
+        {
+            this.selectedAnswers.forEach((response)=>{
+            console.log("enter loop 175")
+            if (response.questionId == QuestionId)
+            {
+                console.log("Entered If Statment 177")
+                response.selected = answerId
+            }
+            else
+            {
+                this.selectedAnswers.push(temp)
+
+            }  
+    })
+        }
+        else
+        {
+            this.selectedAnswers.push(temp)
+        }
+
     }
 }
 }
