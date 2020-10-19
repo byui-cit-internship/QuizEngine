@@ -3,7 +3,7 @@
         <!-- Main Body -->
         <v-container>
             <v-card >
-                <QuestionItem v-bind:question="currentQuestion" ref="questionObj">
+                <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer" ref="questionObj">
                 </QuestionItem>
             </v-card>
             <v-card>
@@ -26,9 +26,10 @@ export default {
    created() {
         this.init()
    },
-      data: () => ({
+    data: () => ({
             currPage: 0,
-            selectedAnswers: {},
+            selectedAnswers: [],
+            selectedAnswer: -1
    }),
    computed: {
        currentQuestion()
@@ -73,14 +74,18 @@ methods:{
         this.$refs.questionObj.answer_toggle = -1
         this.storeSelectedAnswers(this.currentQuestion.id)
     },
+    setSelectedAnswer(answer_toggle)
+    {
+        this.selectedAnswer = answer_toggle
+    },
     storeSelectedAnswers(QuestionId)
     {
-        var answerId = this.$refs.QuestionItem.answer_toggle.value;
+        var answerId = this.$refs.questionObj.answer_toggle;
         var temp = {
             "questionId": QuestionId,
             "selected": answerId
         };
-        this.selectedAnswers.append(temp);
+        this.selectedAnswers.push(temp);
     }
 }
 }

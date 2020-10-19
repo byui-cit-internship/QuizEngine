@@ -34,7 +34,7 @@ export default {
   'S', 'T', 'U', 'V', 'W', 'X',
   'Y', 'Z'
 ],
-    answer_toggle: null,
+// answer_toggle: -1
 
  }),
   props: {
@@ -52,7 +52,31 @@ export default {
             "correctAnswers":[1],
             }
            },
-}},
+                },
+},
+    value : {
+        type: Number,
+        required: true,
+        default() {
+            return -1
+        }
+    },
+    computed: {
+        answer_toggle: {
+           type: Number,
+           get () {
+               return this.value
+           },
+           set(val) {
+               this.$emit('input', val)
+           }
+    } 
+    },
+    watch: {
+        answer_toggle() {
+            this.$emit("AnswerItem", this.answer_toggle)
+        }
+    },
     methods :{
         resetActiveAnswers()
         {

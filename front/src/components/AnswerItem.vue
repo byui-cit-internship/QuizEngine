@@ -8,7 +8,7 @@
 export default {
   name: 'AnswerItem',
   created: function () {
-    this.$refs.answerbtn.value=this.answer.id
+    //this.$refs.answerbtn.value=this.answer.id
     this.init()
   },
   props: {
