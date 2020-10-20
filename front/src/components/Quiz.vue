@@ -64,13 +64,13 @@ export default {
        },
        nextQuestionId()
        {
-           if (this.quiz.questions.length <= this.currPage + 1)
+           if (this.quiz.questions.length < this.currPage + 1)
            {
                return this.quiz.questions[this.currPage + 1].id
            }
            else
            {
-               return this.quiz.questions[this.currPage + 1].id
+               return this.quiz.questions[this.currPage].id
            }
            
        }
