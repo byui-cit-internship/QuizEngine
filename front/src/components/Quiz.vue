@@ -64,15 +64,8 @@ export default {
        },
        nextQuestionId()
        {
-           if (this.quiz.questions.length < this.currPage + 1)
-           {
-               return this.quiz.questions[this.currPage + 1].id
-           }
-           else
-           {
-               return this.quiz.questions[this.currPage].id
-           }
-           
+            return this.quiz.questions[this.currPage + 1].id
+
        }
    },
   props: {
@@ -117,8 +110,7 @@ methods:{
         // this.QuestionItem.init()
     },
     getPreviousPage: function()
-    {
-        console.log("setting nextqid to:" + this.nextQuestionId)     
+    {     
         if (this.$refs.questionObj.answer_toggle != -1)
         {
             this.storeSelectedAnswers(this.currentQuestion.id)
@@ -148,17 +140,20 @@ methods:{
         //search selected answers for the question id
         console.log("testing qid:" + qid)
         this.$refs.questionObj.answer_toggle = -1
-        this.selectedAnswers.forEach((response)=>{
+        var found = false;
+            this.selectedAnswers.forEach((response)=>{
             if (response.questionId == qid)
             {
                 console.log(response)
                 this.$refs.questionObj.answer_toggle = response.selected
+                found = true
             }
-            else{
+            else if(found == false){
                 this.$refs.questionObj.answer_toggle = -1
 
             }
         })
+        
         //if found set answer toggle to the selected answer for that item
         //if its not found set answer toggle to negative 1
     },
@@ -173,7 +168,7 @@ methods:{
             "questionId": QuestionId,
             "selected": answerId
         }
-        if (this.selectedAnswers.length > 0)
+        if (QuestionId in this.selectedAnswers)
         {
             this.selectedAnswers.forEach((response)=>{
             console.log("enter loop 175")
@@ -181,18 +176,13 @@ methods:{
             {
                 console.log("Entered If Statment 177")
                 response.selected = answerId
-            }
-            else
-            {
-                this.selectedAnswers.push(temp)
-
-            }  
-    })
+            }})
         }
         else
         {
             this.selectedAnswers.push(temp)
         }
+        
 
     }
 }
