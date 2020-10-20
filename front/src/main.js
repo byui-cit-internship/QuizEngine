@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify';
 import AnswerItem from './components/AnswerItem.vue'
 import QuestionItem from './components/QuestionItem.vue'
 import QuizListItem from './components/QuizListItem.vue'
+import './assets/main.css'
 
 
 Vue.config.productionTip = false

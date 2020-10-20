@@ -1,5 +1,5 @@
 <template>
-    <v-btn v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
+    <v-btn class="text-wrap text-left answer" v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
         <!-- <v-card-title v-text="answer.body"/> -->
     </v-btn>
 </template>
@@ -55,3 +55,11 @@ export default {
   }
 }
 </script>
+<style>
+  .answer
+  {
+    height:auto;
+    width:auto;
+
+  }
+</style>

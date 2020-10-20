@@ -77,7 +77,7 @@ export default {
             "description": "This is a test quiz object and should not appear",
             "questions": [
                 { "id":0, "body":"This is a test Question 1 and should not appear", "answers":[ {"id":0, "body":"q Test Answer 1"}, {"id":1, "body":"q Test Answer 2"}, {"id":2, "body":"q Test Answer 3"} ], "correctAnswers":[1] },
-                { "id":1, "body":"This is a test Question 2 and should not appear", "answers":[ {"id":4, "body":"q Test Answer 4"}, {"id":5, "body":"q Test Answer 5"}, {"id":6, "body":"q Test Answer 6"} ], "correctAnswers":[1] },
+                { "id":1, "body":"This is a test Question 2 and should not appear", "answers":[                 { "id": 4, "body": "q Long Test Answer, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }, { "id": 5, "body": "q Medium Test Answer, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam" }, { "id": 6, "body": "q Short Test Answer 6" } ], "correctAnswers":[1] },
                 { "id":2, "body":"This is a test Question 3 and should not appear", "answers":[ {"id":7, "body":"q Test Answer 7"}, {"id":8, "body":"q Test Answer 8"}, {"id":9, "body":"q Test Answer 9"} ], "correctAnswers":[1] }
             ],
             "subjects": ["WDD", "Software Engineering"],
