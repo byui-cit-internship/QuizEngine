@@ -7,7 +7,8 @@
       <v-container fluid>
         <v-autocomplete
           v-model="selectedSubjects"
-          v-on:select="getFilteredQuizzes"
+          v-on:select=getFilteredQuizzes()
+          v-on:change=getFilteredQuizzes()
           label="Subjects"
           :items="getUniqueSubjects"
           chips
@@ -55,6 +56,50 @@ export default {
       filteredQuizzes = [];
       return filteredQuizzes;
     },
+    getFilteredQuizzes() {
+      // for each quiz in quizzes, if quiz.id is in any of selected subjects array, push quiz.title to selected quizzes array
+      // TODO How to handle event of new subject being selected
+
+      this.clearFilteredList();
+      let selectedSubjects = this.selectedSubjects;
+      //console.log(selectedSubjects)
+      let filteredQuizzes = this.filteredQuizzes;
+      // this.quizzes.forEach((element) => {
+      // if (element.subjects.includes(selectedSubjects)) {
+      // filteredQuizzes.push(element.title);
+      // }
+      // });
+      filteredQuizzes = this.quizzes.filter((quiz) => {
+        // let keep = false;
+        // // subjects is an array, and selectedSubjects is also an array, so we need to loop through one or the other before we can use includes
+        // quiz.subjects.forEach((subject) => {
+        //   if (selectedSubjects.includes(subject)) {
+        //     console.log(subject)
+        //     keep = true;
+        //   }
+        // });
+        // return keep;
+        // if (selectedSubjects in quiz.subjects)
+        // {
+        //   return true;
+        // }
+        // else
+        // {
+        //   return false;
+        // }
+          if (selectedSubjects.some(subject => quiz.subjects.includes(subject)) == true)
+          {
+            return true
+            console.log("true in .some")
+          }
+          else
+          {
+            return false
+            console.log("false in .some")
+          }
+      });
+      return filteredQuizzes;
+    },
   },
 
   computed: {
@@ -67,34 +112,9 @@ export default {
       //Only unique values allowed in ES6 Set. Way of filtering out non-unique values
       let uniqueSubjects = Array.from(new Set(array)).sort();
       return uniqueSubjects;
-    },
+    }
 
-    //MOVE TO METHODS
-    
-    getFilteredQuizzes() {
-      // for each quiz in quizzes, if quiz.id is in any of selected subjects array, push quiz.title to selected quizzes array
-      // TODO How to handle event of new subject being selected
-
-      this.clearFilteredList();
-      let selectedSubjects = this.selectedSubjects;
-      let filteredQuizzes = this.filteredQuizzes;
-      // this.quizzes.forEach((element) => {
-      // if (element.subjects.includes(selectedSubjects)) {
-      // filteredQuizzes.push(element.title);
-      // }
-      // });
-      filteredQuizzes = this.quizzes.filter((quiz) => {
-        let keep = false;
-        // subjects is an array, and selectedSubjects is also an array, so we need to loop through one or the other before we can use includes
-        quiz.subjects.forEach((subject) => {
-          if (selectedSubjects.includes(subject)) {
-            keep = true;
-          }
-        });
-        return keep;
-      });
-      return filteredQuizzes;
-    },
+    //MOVE TO METHOD
   },
 };
 </script>
