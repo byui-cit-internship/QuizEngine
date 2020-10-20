@@ -39,6 +39,7 @@
 
 <script>
 import QuizListItem from "./QuizListItem";
+import quizzesJson from "../assets/quizzes.json";
 export default {
   name: "QuizList",
   components: { QuizListItem },
@@ -46,32 +47,33 @@ export default {
     show: false,
     selectedSubjects: [],
     filteredQuizzes: [],
-    quizzes: [
-      { id: 1, title: "Quiz 1", subjects: ["Database", "Security"] },
-      {
-        id: 2,
-        title: "Quiz 2",
-        subjects: ["Database", "Software Engineering"],
-      },
-      {
-        id: 3,
-        title: "Quiz 3",
-        subjects: ["Security", "Software Engineering"],
-      },
-      {
-        id: 4,
-        title: "Quiz 4", 
-        subjects: ["Security", "Front End Engineering"],
-      },
-      {
-        id: 5,
-        title: "Quiz 5",
-        subjects: ["Security", "Software Engineering"],
-      },
-      { id: 6, title: "Quiz 6", subjects: ["Software Engineering"] },
-      { id: 7, title: "Quiz 7", subjects: ["Front End Engineering"] },
-      { id: 8, title: "Quiz 8", subjects: ["Back End Engineering"] },
-    ],
+    quizzes: quizzesJson,
+    // quizzes: [
+    //   { id: 1, title: "Quiz 1", subjects: ["Database", "Security"] },
+    //   {
+    //     id: 2,
+    //     title: "Quiz 2",
+    //     subjects: ["Database", "Software Engineering"],
+    //   },
+    //   {
+    //     id: 3,
+    //     title: "Quiz 3",
+    //     subjects: ["Security", "Software Engineering"],
+    //   },
+    //   {
+    //     id: 4,
+    //     title: "Quiz 4", 
+    //     subjects: ["Security", "Front End Engineering"],
+    //   },
+    //   {
+    //     id: 5,
+    //     title: "Quiz 5",
+    //     subjects: ["Security", "Software Engineering"],
+    //   },
+    //   { id: 6, title: "Quiz 6", subjects: ["Software Engineering"] },
+    //   { id: 7, title: "Quiz 7", subjects: ["Front End Engineering"] },
+    //   { id: 8, title: "Quiz 8", subjects: ["Back End Engineering"] },
+    // ],
   }),
   methods: {
     clearFilteredList() {
