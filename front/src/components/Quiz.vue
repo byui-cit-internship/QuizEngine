@@ -23,6 +23,7 @@
 
 <script>
 import QuestionItem from "./QuestionItem";
+import quizzesJson from "../assets/quizzes.json";
 export default {
    name: 'QuizItem',
    components: { QuestionItem },
@@ -34,7 +35,8 @@ export default {
             selectedAnswers: [],
             selectedAnswer: -1,
             prevqid: -1,
-            nextqid: -1
+            nextqid: -1,
+            quizzes: quizzesJson
    }),
    computed: {
        currentQuestion()
@@ -115,6 +117,10 @@ methods:{
     init() {
         console.log("entering quiz init")
         // this.QuestionItem.init()
+    },
+    getQuizByIdFromJson()
+    {
+        this.quiz = this.quizzes.filter(quiz => quiz.id == this.quizId)
     },
     getPreviousPage: function()
     {     
