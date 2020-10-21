@@ -89,7 +89,7 @@
     {
         "course": "CIT380",
         "courseId": "001CIT380",
-        "instructorId": 101
+        "instructorId": 101,
         "section": "001"
     },
     "difficulty": "Easy"

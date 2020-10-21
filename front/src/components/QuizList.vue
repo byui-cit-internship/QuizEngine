@@ -25,9 +25,10 @@
 
         <!-- TODO Show Filtered Quizzes based on Subject (Dynamic List Rendering) -->
         <v-subheader>Quiz</v-subheader>
-        <v-list-item v-for="quiz in getFilteredQuizzes" :key="quiz.index">
+        <QuizListItem v-for="quiz in filteredQuizzes" :key="quiz.index" @click="quizref" v-bind:quizitem="quiz"></QuizListItem>
+        <!-- <v-list-item v-for="quiz in filteredQuizzes" :key="quiz.index" :to="quiz">
           {{ quiz }}
-        </v-list-item>
+        </v-list-item> -->
       </v-container>
       <!-- TODO Show Filtered Quizzes based on Subject -->
       <v-subheader>Quiz</v-subheader>
@@ -45,6 +46,7 @@ export default {
   name: "QuizList",
   components: { QuizListItem },
   data: () => ({
+    quizref: "/quiz",
     show: false,
     selectedSubjects: [],
     filteredQuizzes: [],
@@ -61,44 +63,7 @@ export default {
       // TODO How to handle event of new subject being selected
 
       this.clearFilteredList();
-      let selectedSubjects = this.selectedSubjects;
-      //console.log(selectedSubjects)
-      let filteredQuizzes = this.filteredQuizzes;
-      // this.quizzes.forEach((element) => {
-      // if (element.subjects.includes(selectedSubjects)) {
-      // filteredQuizzes.push(element.title);
-      // }
-      // });
-      filteredQuizzes = this.quizzes.filter((quiz) => {
-        // let keep = false;
-        // // subjects is an array, and selectedSubjects is also an array, so we need to loop through one or the other before we can use includes
-        // quiz.subjects.forEach((subject) => {
-        //   if (selectedSubjects.includes(subject)) {
-        //     console.log(subject)
-        //     keep = true;
-        //   }
-        // });
-        // return keep;
-        // if (selectedSubjects in quiz.subjects)
-        // {
-        //   return true;
-        // }
-        // else
-        // {
-        //   return false;
-        // }
-          if (selectedSubjects.some(subject => quiz.subjects.includes(subject)) == true)
-          {
-            return true
-            console.log("true in .some")
-          }
-          else
-          {
-            return false
-            console.log("false in .some")
-          }
-      });
-      return filteredQuizzes;
+      this.filteredQuizzes = this.quizzes.filter((quiz) => this.selectedSubjects.some(subject => quiz.subjects.includes(subject)));
     },
   },
 
