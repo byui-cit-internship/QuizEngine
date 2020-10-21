@@ -53,6 +53,10 @@ export default {
     quizzes: quizzesJson,
   }),
   methods: {
+    callQuiz(quizId)
+    {
+      this.$router.replace({name:'quiz', params:{quizId}})
+    },
     clearFilteredList() {
       let filteredQuizzes = this.filteredQuizzes;
       filteredQuizzes = [];

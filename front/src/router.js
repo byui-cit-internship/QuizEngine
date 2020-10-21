@@ -28,9 +28,10 @@ export default new Router({
       component: () => import("./components/QuestionItem")
     },
     {
-      path: "/quiz",
+      path: "/quiz:id",
       name: "quiz",
-      component: () => import("./components/Quiz")
+      component: () => import("./components/Quiz"),
+      props: true
     }
   ]
 });
