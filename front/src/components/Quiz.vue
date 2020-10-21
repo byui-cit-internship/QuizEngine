@@ -69,6 +69,10 @@ export default {
        }
    },
   props: {
+    quizid: {
+        type: Number,
+        required: true
+    },
     quiz: {
       type: Object,
       default() {
