@@ -9,6 +9,9 @@
             <v-card>
                 Selected Answers: {{this.selectedAnswers}}
             </v-card>
+            <v-card>
+                QuizId: {{this.quizId}}
+            </v-card>
         </v-container>
         <!-- Navigation -->
         <button v-on:click="getNextPage">testButton</button>
@@ -69,7 +72,7 @@ export default {
        }
    },
   props: {
-    quizid: {
+    quizId: {
         type: Number,
         required: true
     },

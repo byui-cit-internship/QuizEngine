@@ -28,7 +28,7 @@ export default new Router({
       component: () => import("./components/QuestionItem")
     },
     {
-      path: "/quiz:id",
+      path: "/quiz",
       name: "quiz",
       component: () => import("./components/Quiz"),
       props: true

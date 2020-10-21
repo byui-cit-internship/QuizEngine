@@ -25,7 +25,7 @@
 
         <!-- TODO Show Filtered Quizzes based on Subject (Dynamic List Rendering) -->
         <v-subheader>Quiz</v-subheader>
-        <QuizListItem v-for="quiz in filteredQuizzes" :key="quiz.index" @click="quizref" v-bind:quizitem="quiz"></QuizListItem>
+        <QuizListItem v-for="quiz in filteredQuizzes" :key="quiz.index" @click="callQuiz(quiz.id)" v-bind:quizitem="quiz" ></QuizListItem>
         <!-- <v-list-item v-for="quiz in filteredQuizzes" :key="quiz.index" :to="quiz">
           {{ quiz }}
         </v-list-item> -->
