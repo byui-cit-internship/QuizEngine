@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn v-bind:color="{getColor}" v-bind:class="{getStyle}" v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
+    <v-btn :color="answerColor" :class="style" v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
         <!-- <v-card-title v-text="answer.body"/> -->
     </v-btn>
   </div>
@@ -21,8 +21,7 @@ export default {
         return false;
       }
     },
-    correct: 
-    {
+    correct: {
       type: Boolean,
       default(){
         return true
@@ -47,28 +46,28 @@ export default {
      }
    },
   },
-    data: function(){
-      this.init()
-      return {
-        id: 0,
-        ungradedStyle: "text-wrap text-left answer",
-        gradedStyle: "text-wrap text-left answer"
-      }
-   },
+  data: () => ({
+    id: 0,
+    style: "text-wrap text-left answer",
+    answerColor: "",
+    disabled: false
+  }),
    computed: {
      value(){
        return 0
      }
    },
   methods: {
-    getColor()
+    setState()
     {
       //colors
       var right = "success"
       var wrong = "incorrect"
+      var gradedStyle = " graded"
       var neutral = "neutral"
       if (this.graded)
       {
+        this.style = this.style.concat(gradedStyle)
         if (this.correct)
         {
           return right
@@ -85,7 +84,7 @@ export default {
     },
     getStyle()
     {
-      return this.ungradedStyle
+      return this.gradedStyle
     },
     init() 
     {
@@ -94,17 +93,34 @@ export default {
       //document.getElementsByTagName("answer")[0].setAttribute("name", tagName)
       //document.getElementsByTagName("answerBTN")[0].setAttribute("value", this.answer.id)
       //var value = answer.id
+      this.answerColor = this.setState()
       console.log("currentId is " + this.answer.id + " " + this.id)
 
     }
   }
 }
 </script>
-<style>
+<style lang="scss">
   .answer
   {
     height:auto;
     width:auto;
-
   }
+  .graded
+  {
+    pointer-events: none !important;
+  }
+  /* overrides the diabled button style */
+// .theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn-outlined) {
+//   &.correct{
+//     color:inherit !important;
+//     background-color: rgb(70, 201, 70) !important;
+//   }
+//   &.incorrect{
+//     color:inherit !important;
+//     background-color: #F50057 !important;
+//   }
+//   color:inherit !important;
+//   background-color: green !important;
+// }
 </style>

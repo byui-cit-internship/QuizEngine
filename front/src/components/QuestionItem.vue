@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-card>
+        <v-card color="primary">
             <v-card-title v-text="question.body" z-index:4>
             </v-card-title>
         </v-card>
