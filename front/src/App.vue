@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <Navbar />
+  <v-app light>
+    <Navbar light />
     <v-main>
       <!-- <HelloWorld /> -->
       <router-view />

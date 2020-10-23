@@ -16,7 +16,6 @@
             <v-divider/>
         <v-btn x-large height=250  v-text="btn3" block :to="helloworld">
         </v-btn>
-
     </v-container>
 </template>
 
