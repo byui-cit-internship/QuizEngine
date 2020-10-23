@@ -10,7 +10,7 @@
         <v-row><v-spacer/></v-row>
         <v-card class="answer" v-for="(answer, index) in question.answers" :key="index">
             
-            <AnswerItem v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id">
+            <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id">
             </AnswerItem>
             
         </v-card>
@@ -52,7 +52,14 @@ answer_toggle: -1
             "correctAnswers":[1],
             }
            },
-                },
+            },
+    graded: {
+        type: Boolean,
+        default(){
+            return false;
+        }
+    }
+
 },
     // value : {
     //     type: Object,

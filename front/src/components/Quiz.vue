@@ -3,7 +3,7 @@
         <!-- Main Body -->
         <v-container>
             <v-card >
-                <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer" ref="questionObj">
+                <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer"  >
                 </QuestionItem>
             </v-card>
             <v-card>
