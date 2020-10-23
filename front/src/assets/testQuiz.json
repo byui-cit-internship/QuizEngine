@@ -1,0 +1,96 @@
+{
+    "id": 0,
+    "title": "Quiz #1",
+    "description": "This is a test quiz object and should not appear",
+    "author":
+    {
+        "user_id": 0,
+        "first": "Austin",
+        "last": "Benitez"
+    },
+    "creation_date": "10/20/2020 10:33:48",
+    "last_edited": "10/21/2020 10:33:48",
+    "last_edited_by": 
+    {
+        "user_id": 0
+    },
+    "questions": [
+        {
+            "id": 0,
+            "body": "This is a test Question 1 and should not appear",
+            "answers": [
+                {
+                    "id": 0,
+                    "body": "q Test Answer 1"
+                },
+                {
+                    "id": 1,
+                    "body": "q Test Answer 2"
+                },
+                {
+                    "id": 2,
+                    "body": "q Test Answer 3"
+                }
+            ],
+            "correctAnswers": [
+                1
+            ], "subjects" :["Software Engineering"]
+        },
+        {
+            "id": 1,
+            "body": "This is a test Question 2 and should not appear",
+            "answers": [
+                {
+                    "id": 4,
+                    "body": "q Long Test Answer, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                },
+                {
+                    "id": 5,
+                    "body": "q Medium Test Answer, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+                },
+                {
+                    "id": 6,
+                    "body": "q Short Test Answer 6"
+                }
+            ],
+            "correctAnswers": [
+                4
+            ]
+            , "subjects" :["Software Engineering"]
+        },
+        {
+            "id": 2,
+            "body": "This is a test Question 3 and should not appear",
+            "answers": [
+                {
+                    "id": 7,
+                    "body": "q Test Answer 7"
+                },
+                {
+                    "id": 8,
+                    "body": "q Test Answer 8"
+                },
+                {
+                    "id": 9,
+                    "body": "q Test Answer 9"
+                }
+            ],
+            "correctAnswers": [
+                8
+            ]
+            , "subjects" :["Data Science", "Software Engineering"]
+        }
+    ],
+    "subjects": [
+        "Data Science",
+        "Software Engineering"
+    ],
+    "class": 
+    {
+        "course": "CIT380",
+        "courseId": "001CIT380",
+        "instructorId": 101,
+        "section": "001"
+    },
+    "difficulty": "Easy"
+}

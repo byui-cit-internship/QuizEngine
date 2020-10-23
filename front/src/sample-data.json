@@ -1,0 +1,18 @@
+{
+    "quizzes": [{
+        "id": 1,
+        "quizName": "Sample Quiz #1",
+        "quizSubject": "Database",
+        "numberOfQuestions": 5,
+        "questions": [{
+            "questionID": 1234,
+            "questionType": "multiple-choice",
+            "answer": "D",
+            "answerReason": "Most correct",
+            "options": [{
+
+            }]
+
+        }]
+    }]
+}
