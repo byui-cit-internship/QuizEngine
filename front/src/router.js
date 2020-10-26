@@ -32,6 +32,12 @@ export default new Router({
       name: "quiz",
       component: () => import("./components/Quiz"),
       props: true
+    },
+    {
+      path: "/quizresults",
+      name: "quizresults",
+      component: () => import("./components/QuizResults"),
+      props: true
     }
   ]
 });

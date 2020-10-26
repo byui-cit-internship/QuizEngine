@@ -17,6 +17,7 @@ export default {
     data:() => ({
         //routing
         quizzes: quizzesJson,
+        quizdata: {}
     }),
     props: {
         quizId: {
@@ -27,6 +28,18 @@ export default {
             type: Boolean,
             default(){
                 return true
+            }
+        }
+    },
+    computed: {
+        quiz: {
+            set(obj)
+            {
+                this.quizdata = obj
+            },
+            get()
+            {
+                return this.quizdata
             }
         }
     },

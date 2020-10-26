@@ -3,7 +3,7 @@
         <!-- Main Body -->
         <v-container>
             <v-card >
-                <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer"  >
+                <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer" ref="questionObj" >
                 </QuestionItem>
             </v-card>
             <v-card>
@@ -17,6 +17,7 @@
         <button v-on:click="getNextPage">testButton</button>
         <v-btn v-show="previous" v-on:click.native=getPreviousPage>Previous</v-btn>
         <v-btn v-show="next" v-on:click.native=getNextPage>Next</v-btn>
+        <v-btn v-show="final" v-on:click.native=submit>Submit</v-btn>
     </v-container>
 </template>
 
@@ -71,6 +72,19 @@ export default {
            }
 
        },
+       final()
+       {
+           console.log("in final")
+           if(this.currPage >= (this.quiz.questions.length - 1))
+           {
+               console.log("in Final in If")
+               return true
+           }
+           else
+           {
+               return false
+           }
+       },
        prevQuestionId()
        {
            return this.quiz.questions[this.currPage - 1].id
@@ -79,7 +93,19 @@ export default {
        {
             return this.quiz.questions[this.currPage + 1].id
 
-       }
+       },
+       quizinfo: {
+            get()
+            {
+                var quizId = this.quiz.id
+                var temp = {name:'quizresults', params:{quizId}};
+                return temp
+            },
+            set(obj)
+            {
+                this.quizdata = obj
+            }
+        }
    },
   props: {
     quizId: {
@@ -158,6 +184,10 @@ methods:{
 
         this.setAnswerToggle(this.nextQuestionId)
         this.currPage++;
+    },
+    submit: function()
+    {
+        this.$router.replace(this.quizinfo)
     },
     setAnswerToggle(qid)
     {
