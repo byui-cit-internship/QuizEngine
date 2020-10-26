@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <FullQuiz :selectedAnswers="selectedAnswers" :quizId="quizId"></FullQuiz>
+        <FullQuiz :selectedAnswers="selectedAnswers" :quizId="this.quizId"></FullQuiz>
         <v-card>
             Quiz Id:{{this.quizId}}
         </v-card>

@@ -235,10 +235,7 @@ methods:{
             this.storeSelectedAnswers(this.currentQuestion.id)
             this.$router.replace(this.quizinfo)
         }
-        if (!this.checkIfAllAnswered())
-        {
-            this.alert = true
-        }
+        this.alert = !this.checkIfAllAnswered()
     },
     setAnswerToggle(qid)
     {

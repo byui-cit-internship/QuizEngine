@@ -1,6 +1,11 @@
 // This will be used to view and edit the quiz as well as in quiz results
 <template>
     <v-container>
+        <v-card>
+            <v-card-title v-text="selectedAnswers + quiz">
+                
+            </v-card-title>
+        </v-card>
         <v-container v-for="(question, index) in quiz.questions" :key="index">
             <QuestionItem v-bind:question="question" :answer_toggle="selectedAnswers[index]" :graded="graded">
             </QuestionItem>
@@ -50,6 +55,10 @@ export default {
         }
     },
     methods: {
+        init()
+        {
+            this.getQuizByIdFromJson()
+        },
         getQuizByIdFromJson()
         {
             console.log("Getting quiz from json......")
@@ -58,6 +67,9 @@ export default {
             this.quiz = this.quizzes.find(quizz => quizz.id == this.quizId)
             console.log("Quiz obtained:" + this.quiz.id)
         },
-    }
+    },
+      created() {
+        this.init()
+   },
 };
 </script>
