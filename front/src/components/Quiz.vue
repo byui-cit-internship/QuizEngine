@@ -208,13 +208,16 @@ methods:{
     
     checkIfAllAnswered()
     {
+
+        var allAnswered = false;
         /* This line makes sure that every instance of object in selectedAnswers 
         has both a question component AND a selected answer*/
-        var allAnswered = false;
+        var allQAnswered = (this.selectedAnswers.every(qna => qna.question && qna.selected))
         /*now we already checked if every question in the array is answered now we check if 
         there is a question in the array for every question in the quiz*/
+        var allQPopulated = (this.selectedAnswers.length == this.quiz.questions.length)
         console.log("answered1? : " + allAnswered)
-        if((this.selectedAnswers.length == this.quiz.questions.length) && (this.selectedAnswers.every(qna => qna.question && qna.selected)))
+        if(allQAnswered && allQPopulated)
         {
             console.log("answered2? : " + allAnswered)
             allAnswered = true
