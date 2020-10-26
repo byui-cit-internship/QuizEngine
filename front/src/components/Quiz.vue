@@ -210,11 +210,13 @@ methods:{
     {
         /* This line makes sure that every instance of object in selectedAnswers 
         has both a question component AND a selected answer*/
-        var allAnswered = (this.selectedAnswers.every(qna => qna.question && qna.selected));
+        var allAnswered = false;
         /*now we already checked if every question in the array is answered now we check if 
         there is a question in the array for every question in the quiz*/
-        if(this.selectedAnswers.length == this.quiz.questions.length)
+        console.log("answered1? : " + allAnswered)
+        if((this.selectedAnswers.length == this.quiz.questions.length) && (this.selectedAnswers.every(qna => qna.question && qna.selected)))
         {
+            console.log("answered2? : " + allAnswered)
             allAnswered = true
         }
         else
@@ -230,7 +232,7 @@ methods:{
             this.storeSelectedAnswers(this.currentQuestion.id)
             this.$router.replace(this.quizinfo)
         }
-        if (!this.checkIfAllAnswered)
+        if (!this.checkIfAllAnswered())
         {
             this.alert = true
         }

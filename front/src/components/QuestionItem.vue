@@ -13,7 +13,7 @@
             <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id">
             </AnswerItem>
             
-        </v-card>
+        </v-card> 
         <v-card>Current Answer Id: {{answer_toggle}}</v-card>
 
         </v-col>
