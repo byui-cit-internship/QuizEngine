@@ -2,7 +2,7 @@
 <template>
     <v-container>
         <v-container v-for="(question, index) in quiz.questions" :key="index">
-            <QuestionItem v-bind:question="question" :graded="graded">
+            <QuestionItem v-bind:question="question" :answer_toggle="selectedAnswers[index]" :graded="graded">
             </QuestionItem>
         </v-container>
     </v-container>
@@ -23,6 +23,12 @@ export default {
         quizId: {
             type: Number,
             required: true
+        },
+        selectedAnswers: {
+            type: Array,
+            default(){
+                return [{qid: 0, aid: 1}, {qid:0, aid:2}]
+            }
         },
         graded: {
             type: Boolean,

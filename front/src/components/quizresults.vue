@@ -1,6 +1,12 @@
 <template>
     <v-container>
-        <FullQuiz :quizId="quizId"></FullQuiz>
+        <FullQuiz :selectedAnswers="selectedAnswers" :quizId="quizId"></FullQuiz>
+        <v-card>
+            Quiz Id:{{this.quizId}}
+        </v-card>
+        <v-card>
+            Selected answers: {{this.selectedAnswers}}
+        </v-card>
     </v-container>
 </template>
 
@@ -21,7 +27,12 @@ export default {
         quizId: {
             type: Number,
             required: true
+        },
+        selectedAnswers: {
+            type: Array,
+            required: true
         }
-    }
+    },
+
 };
 </script>
