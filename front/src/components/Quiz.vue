@@ -2,10 +2,16 @@
     <v-container>
         <!-- Main Body -->
         <v-container>
+            <v-card header color="warning" v-show="alert" >
+                <v-card-title v-text="alertmessage">
+                    
+                </v-card-title>
+            </v-card>
             <v-card >
                 <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer" ref="questionObj">
                 </QuestionItem>
             </v-card>
+
             <v-card>
                 Selected Answers: {{this.selectedAnswers}}
             </v-card>
@@ -18,7 +24,6 @@
         <v-btn v-show="previous" v-on:click.native=getPreviousPage>Previous</v-btn>
         <v-btn v-show="next" v-on:click.native=getNextPage>Next</v-btn>
         <v-btn v-show="final" v-on:click.native=submit>Submit</v-btn>
-
     </v-container>
 </template>
 
@@ -36,9 +41,22 @@ export default {
             prevqid: -1,
             nextqid: -1,
             quizzes: quizzesJson,
-            quizdata: {}
-   }),
+            quizdata: {},
+            alertbool: false,
+            alertmessage: "Please answer all questions before submitting!" 
+            }),
    computed: {
+       alert: {
+           get()
+           {
+               console.log("getting alert val:" + this.alertbool)
+               return this.alertbool
+           },
+           set(alert)
+           {
+               this.alertbool = alert
+           }
+       },
        quiz: {
            get()
            {
@@ -99,7 +117,8 @@ export default {
             get()
             {
                 var quizId = this.quiz.id
-                var temp = {name:'quizresults', params:{quizId}};
+                var selectedAnswers = this.selectedAnswers
+                var temp = {name:'quizresults', params:{quizId,selectedAnswers}};
                 return temp
             },
             set(obj)
@@ -186,9 +205,35 @@ methods:{
         this.setAnswerToggle(this.nextQuestionId)
         this.currPage++;
     },
+    
+    checkIfAllAnswered()
+    {
+        /* This line makes sure that every instance of object in selectedAnswers 
+        has both a question component AND a selected answer*/
+        var allAnswered = (this.selectedAnswers.every(qna => qna.question && qna.selected));
+        /*now we already checked if every question in the array is answered now we check if 
+        there is a question in the array for every question in the quiz*/
+        if(this.selectedAnswers.length == this.quiz.questions.length)
+        {
+            allAnswered = true
+        }
+        else
+        {
+            allAnswered = false
+        }
+        return allAnswered
+    },
     submit: function()
     {
-        this.$router.replace(this.quizinfo)
+        if (this.$refs.questionObj.answer_toggle != -1)
+        {
+            this.storeSelectedAnswers(this.currentQuestion.id)
+            this.$router.replace(this.quizinfo)
+        }
+        if (!this.checkIfAllAnswered)
+        {
+            this.alert = true
+        }
     },
     setAnswerToggle(qid)
     {
