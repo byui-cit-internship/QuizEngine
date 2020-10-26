@@ -3,7 +3,7 @@
         <!-- Main Body -->
         <v-container>
             <v-card >
-                <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer" ref="questionObj" >
+                <QuestionItem v-bind:question="currentQuestion" :answer_toggle="selectedAnswer" ref="questionObj">
                 </QuestionItem>
             </v-card>
             <v-card>
@@ -18,6 +18,7 @@
         <v-btn v-show="previous" v-on:click.native=getPreviousPage>Previous</v-btn>
         <v-btn v-show="next" v-on:click.native=getNextPage>Next</v-btn>
         <v-btn v-show="final" v-on:click.native=submit>Submit</v-btn>
+
     </v-container>
 </template>
 

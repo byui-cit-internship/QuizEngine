@@ -59,7 +59,6 @@ answer_toggle: -1
             return false;
         }
     }
-
 },
     // value : {
     //     type: Object,
