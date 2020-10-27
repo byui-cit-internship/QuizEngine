@@ -22,7 +22,8 @@ export default {
     data:() => ({
         //routing
         quizzes: quizzesJson,
-        quizdata: {}
+        quizdata: {},
+        completedDate: Date.now()
     }),
     props: {
         quizId: {
@@ -72,6 +73,7 @@ export default {
         {
             var filecontents = this.quiz;
             filecontents["results"] = this.selectedAnswers;
+            filecontents["quizTakenDate"] = this.completedDate;
             filecontents = JSON.stringify(filecontents);
             var file = new File([filecontents], 'quizresults.json', {type: "text/json;charset=utf-8"})
             FileSaver.saveAs(file)
