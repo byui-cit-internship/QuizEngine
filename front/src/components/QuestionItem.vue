@@ -10,7 +10,7 @@
         <v-row><v-spacer/></v-row>
         <v-card class="answer" v-for="(answer, index) in question.answers" :key="index">
             
-            <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id">
+            <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id" :correct="correct" :selected="selected" ref="currAnswer">
             </AnswerItem>
             
         </v-card> 
@@ -34,7 +34,9 @@ export default {
   'S', 'T', 'U', 'V', 'W', 'X',
   'Y', 'Z'
 ],
-answer_toggle: -1
+answer_toggle: -1,
+selectedAnswer: false,
+correctAnswer:false,
 
  }),
   props: {
@@ -57,6 +59,28 @@ answer_toggle: -1
         type: Boolean,
         default(){
             return false;
+        }
+    },
+},
+computed: {
+    selected: {
+        get()
+        {
+            return this.selectedAnswer;
+        },
+        set(answerId)
+        {
+            this.selectedAnswer = answerId;
+        }
+    },
+    correct: {
+        get()
+        {
+            return this.correctAnswer;
+        },
+        set(answerId)
+        {
+            this.correctAnswer = answerId
         }
     }
 },
@@ -84,6 +108,29 @@ answer_toggle: -1
         resetActiveAnswers()
         {
             this.answer_toggle = -1;
+        },
+        gradeAnswers(answerId)
+        {
+            //we check if the given answer id is correct or incorrect
+            if(answerId == this.correctAnswer)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        },
+        checkSelected(answerId)
+        {
+            if (answerId == this.selectedAnswer)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
         },
         init()
         {

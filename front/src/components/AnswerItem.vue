@@ -27,6 +27,12 @@ export default {
         return true
       }
     },
+    selected: {
+      type: Boolean,
+      default(){
+        return false
+      }
+    },
     answer: {
       type: Object,
       default(){
@@ -72,9 +78,13 @@ export default {
         {
           return right
         }
-        else
+        else if (this.selected)
         {
           return wrong
+        }
+        else if (!this.selected)
+        {
+          return neutral
         }
       }
       else
@@ -95,7 +105,7 @@ export default {
       //var value = answer.id
       this.answerColor = this.setState()
       console.log("currentId is " + this.answer.id + " " + this.id)
-
+      this.setState()
     }
   }
 }

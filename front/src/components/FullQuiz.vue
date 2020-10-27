@@ -52,7 +52,7 @@ export default {
             {
                 return this.quizdata
             }
-        }
+        },
     },
     methods: {
         init()
