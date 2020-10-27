@@ -35,7 +35,7 @@ export default {
     correct: {
       type: Boolean,
       default(){
-        return true
+        return false
       }
     },
     //the selected answer id(s)
@@ -116,19 +116,15 @@ export default {
     },
     gradeMyself()
     {
-      if((this.correctAnswerId == this.answer.id)&& this.selectedAnswerId == this.answer.id)
-      {
-        this.correct = true
-        this.selected = true
-      }
-      else
-      {
-        this.correct = false
-      }
       if(this.selectedAnswerId == this.answer.id)
       {
         this.selected = true
       }
+      if(this.correctAnswerId == this.answer.id)
+      {
+        this.correct = true
+      }
+
 
 
     },
