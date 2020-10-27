@@ -3,10 +3,6 @@
     <v-btn :color="answerColor" :class="style" v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
         <!-- <v-card-title v-text="answer.body"/> -->
     </v-btn>
-    <v-card>
-    Selected?: {{this.selected}}
-    Correct?: {{this.correct}}
-    </v-card>
   </div>
 
 </template>

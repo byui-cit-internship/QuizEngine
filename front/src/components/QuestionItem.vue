@@ -14,7 +14,7 @@
             </AnswerItem>
             
         </v-card> 
-        <v-card>Current Answer Id: {{answer_toggle}} Selected Answer: {{selectedAnswerId}}</v-card>
+        <v-card>Current Answer Id: {{answer_toggle}}</v-card>
 
         </v-col>
         </v-btn-toggle>

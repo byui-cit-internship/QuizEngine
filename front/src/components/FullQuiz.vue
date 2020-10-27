@@ -1,11 +1,6 @@
 // This will be used to view and edit the quiz as well as in quiz results
 <template>
     <v-container>
-        <v-card>
-            <v-card-title v-text="selectedAnswers + this.selectedAnswers[0].selected">
-            </v-card-title>
-                {{this.selectedAnswers[0].selected}}
-        </v-card>
         <v-container v-for="(question, index) in quiz.questions" :key="index">
             <QuestionItem v-bind:question="question" :answer_toggle="selectedAnswers[index].selected" :graded="graded" :selected="selectedAnswers[index].selected">
             </QuestionItem>
