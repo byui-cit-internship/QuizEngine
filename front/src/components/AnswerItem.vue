@@ -1,10 +1,7 @@
 <template>
-  <div>
     <v-btn :color="answerColor" :class="style" v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
         <!-- <v-card-title v-text="answer.body"/> -->
     </v-btn>
-  </div>
-
 </template>
 
 <script>
