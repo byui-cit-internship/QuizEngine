@@ -10,10 +10,10 @@
         <v-row><v-spacer/></v-row>
         <v-card class="answer" v-for="(answer, index) in question.answers" :key="index">
             
-            <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id">
+            <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id" :correctAnswerId="correct" :selectedAnswerId="selected" ref="currAnswer">
             </AnswerItem>
             
-        </v-card>
+        </v-card> 
         <v-card>Current Answer Id: {{answer_toggle}}</v-card>
 
         </v-col>
@@ -34,7 +34,9 @@ export default {
   'S', 'T', 'U', 'V', 'W', 'X',
   'Y', 'Z'
 ],
-answer_toggle: -1
+answer_toggle: -1,
+selectedAnswer: -1,
+correctAnswer:-1,
 
  }),
   props: {
@@ -57,6 +59,24 @@ answer_toggle: -1
         type: Boolean,
         default(){
             return false;
+        }
+    },
+    selected: {
+        type: Number,
+        default(){
+            return -2
+        }
+    }
+},
+computed: {
+    correct: {
+        get()
+        {
+            return this.question.correctAnswers;
+        },
+        set(answerId)
+        {
+            this.correctAnswer = answerId
         }
     }
 },
@@ -85,10 +105,34 @@ answer_toggle: -1
         {
             this.answer_toggle = -1;
         },
+        gradeAnswers(answerId)
+        {
+            //we check if the given answer id is correct or incorrect
+            if(answerId == this.correctAnswer)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        },
+        checkSelected(answerId)
+        {
+            if (answerId == this.selectedAnswer)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        },
         init()
         {
             //document.getElementsByTagName("btnToggle")[0].setAttribute("value",null)
             this.answer_toggle = -1
+            console.log("selected answer: " + this.selected)
         }
     },
     created() {

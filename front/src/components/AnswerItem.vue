@@ -1,10 +1,7 @@
 <template>
-  <div>
     <v-btn :color="answerColor" :class="style" v-text="answerLetter + answerLetterSpace + answer.body" name="answerBTN" v-bind:value="answer.id" >
         <!-- <v-card-title v-text="answer.body"/> -->
     </v-btn>
-  </div>
-
 </template>
 
 <script>
@@ -21,10 +18,30 @@ export default {
         return false;
       }
     },
+    //correct answers id
+    correctAnswerId: {
+      type: Array,
+      default(){
+        return -1
+      }
+    },
     correct: {
       type: Boolean,
       default(){
-        return true
+        return false
+      }
+    },
+    //the selected answer id(s)
+    selectedAnswerId: {
+      type:  Number,
+      default(){
+        return -1
+      }
+    },
+    selected: {
+      type: Boolean,
+      default(){
+        return false
       }
     },
     answer: {
@@ -72,9 +89,13 @@ export default {
         {
           return right
         }
-        else
+        else if (this.selected)
         {
           return wrong
+        }
+        else if (!this.selected)
+        {
+          return neutral
         }
       }
       else
@@ -86,6 +107,20 @@ export default {
     {
       return this.gradedStyle
     },
+    gradeMyself()
+    {
+      if(this.selectedAnswerId == this.answer.id)
+      {
+        this.selected = true
+      }
+      if(this.correctAnswerId == this.answer.id)
+      {
+        this.correct = true
+      }
+
+
+
+    },
     init() 
     {
       //this.answerBtn.value = this.answer.id
@@ -93,6 +128,7 @@ export default {
       //document.getElementsByTagName("answer")[0].setAttribute("name", tagName)
       //document.getElementsByTagName("answerBTN")[0].setAttribute("value", this.answer.id)
       //var value = answer.id
+      this.gradeMyself()
       this.answerColor = this.setState()
       console.log("currentId is " + this.answer.id + " " + this.id)
 
