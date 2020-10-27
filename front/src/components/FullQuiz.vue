@@ -5,12 +5,17 @@
             <QuestionItem v-bind:question="question" :answer_toggle="selectedAnswers[index].selected" :graded="graded" :selected="selectedAnswers[index].selected">
             </QuestionItem>
         </v-container>
+        <v-container>
+            <v-btn v-on:click.native=downloadJsonResults()>Download Results</v-btn>
+        </v-container>
     </v-container>
 </template>
 
 <script>
 import QuestionItem from "./QuestionItem"
 import quizzesJson from "../assets/quizzes.json";
+import FileSaver from 'file-saver';
+
 export default {
     components: { QuestionItem },
     name:"FullQuiz",
@@ -63,6 +68,15 @@ export default {
             this.quiz = this.quizzes.find(quizz => quizz.id == this.quizId)
             console.log("Quiz obtained:" + this.quiz.id)
         },
+        downloadJsonResults()
+        {
+            var filecontents = this.quiz;
+            filecontents["results"] = this.selectedAnswers;
+            filecontents = JSON.stringify(filecontents);
+            var file = new File([filecontents], 'quizresults.json', {type: "text/json;charset=utf-8"})
+            FileSaver.saveAs(file)
+            return 0
+        }
     },
       created() {
         this.init()

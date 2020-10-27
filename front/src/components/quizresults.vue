@@ -7,10 +7,6 @@
         <v-card>
             Selected answers: {{this.selectedAnswers}}
         </v-card>
-        <v-container>
-            <v-btn v-show="next" v-on:click.native=getNextPage>Next</v-btn>
-            <v-btn v-show="final" v-on:click.native=submit>Submit</v-btn>
-        </v-container>
     </v-container>
 </template>
 
@@ -38,10 +34,7 @@ export default {
         }
     },
     methods: {
-        downloadJsonResults()
-        {
-            return 0
-        }
+
     }
 
 };
