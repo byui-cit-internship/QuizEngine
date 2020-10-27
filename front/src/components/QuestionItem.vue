@@ -10,11 +10,11 @@
         <v-row><v-spacer/></v-row>
         <v-card class="answer" v-for="(answer, index) in question.answers" :key="index">
             
-            <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id" :correct="correct" :selected="selected" ref="currAnswer">
+            <AnswerItem :graded="graded" v-bind:answer='answer' v-bind:answerLetter='answerLetters[index]' v-bind:value="answer.id" :correctAnswerId="correct" :selectedAnswerId="selected" ref="currAnswer">
             </AnswerItem>
             
         </v-card> 
-        <v-card>Current Answer Id: {{answer_toggle}}</v-card>
+        <v-card>Current Answer Id: {{answer_toggle}} Selected Answer: {{selectedAnswerId}}</v-card>
 
         </v-col>
         </v-btn-toggle>
@@ -35,8 +35,8 @@ export default {
   'Y', 'Z'
 ],
 answer_toggle: -1,
-selectedAnswer: false,
-correctAnswer:false,
+selectedAnswer: -1,
+correctAnswer:-1,
 
  }),
   props: {
@@ -61,22 +61,18 @@ correctAnswer:false,
             return false;
         }
     },
+    selected: {
+        type: Number,
+        default(){
+            return -2
+        }
+    }
 },
 computed: {
-    selected: {
-        get()
-        {
-            return this.selectedAnswer;
-        },
-        set(answerId)
-        {
-            this.selectedAnswer = answerId;
-        }
-    },
     correct: {
         get()
         {
-            return this.correctAnswer;
+            return this.question.correctAnswers;
         },
         set(answerId)
         {
@@ -136,6 +132,7 @@ computed: {
         {
             //document.getElementsByTagName("btnToggle")[0].setAttribute("value",null)
             this.answer_toggle = -1
+            console.log("selected answer: " + this.selected)
         }
     },
     created() {
