@@ -8,7 +8,7 @@
         </v-row>
             <v-spacer/>
             <v-divider/>
-        <v-btn x-large height=250  v-text="btn2" block :to="helloworld">
+        <v-btn x-large height=250  v-text="btn2" block :to="quizform">
         </v-btn>
         <v-row style="height: 25px;">
         </v-row>
@@ -27,6 +27,7 @@ export default {
         //routing
         quizlist: "/quizlist",
         helloworld:"/helloworld",
+        quizform: "/quizform/quizform",
         btn1: "Quiz List",
         btn2: "Create a Quiz",
         btn3: "Results"
