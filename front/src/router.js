@@ -38,6 +38,12 @@ export default new Router({
       name: "quizresults",
       component: () => import("./components/QuizResults"),
       props: true
+    },
+    {
+      path: "/studybook",
+      name: "studybook",
+      component: () => import("./components/StudyBook"),
+      props: true
     }
   ]
 });

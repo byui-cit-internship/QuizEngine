@@ -1,31 +1,17 @@
 <template>
     <v-container fluid style="text-align:left">
-        <v-row style="height: 25px;">
-        </v-row>
-        <v-btn x-large height=250 v-text="btn1" block :to="quizlist">
-        </v-btn>
-        <v-row style="height: 25px;">
-        </v-row>
-            <v-spacer/>
-            <v-divider/>
-        <v-btn x-large height=250  v-text="btn2" block :to="helloworld">
-        </v-btn>
-        <v-row style="height: 25px;">
-        </v-row>
-            <v-spacer/>
-            <v-divider/>
-        <v-btn x-large height=250  v-text="btn3" block :to="helloworld">
-        </v-btn>
+        <ChartContainer></ChartContainer>
     </v-container>
 </template>
 
 <script>
-import Chart from "chart.js"
+import ChartContainer from "./ChartContainer"
 export default {
-    name:"Home",
+    name:"StudyBook",
+    components: { ChartContainer },
     data:() => ({
         //routing
-        chartTitle: "Test Chart"
+        chartTitle: "Test Chart",
     })
 };
 </script>
