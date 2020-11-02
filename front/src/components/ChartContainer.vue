@@ -14,32 +14,56 @@ export default {
     name: "ChartContainer",
     components: {TestChart2},
     data: () => ({
-        chartdata: {
-      type: 'horizontalBar',
+      //subjectNames: this.getSubjectNames(),
+      //subjectCorrect: this.getSubjectCorrect(),
+      chartdata: {
       labels: ['January', 'February', 'March', 'April', 'May', 'June'],
       datasets: [
         {
           label: 'Data One',
-                      data: [12, 19, 3, 5, 2, 3],
+          data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+
                 'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
+
                 'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+
             ],
             borderWidth: 1
-        }
+        },
+                {
+          label: 'Data One',
+          data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+
+                'rgba(255, 99, 132, 0.2)',
+            ],
+            borderColor: [
+
+                'rgba(255, 99, 132, 1)',
+
+            ],
+            borderWidth: 1
+        },
       ]
+    },
+    chartdata2: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'Correct',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [12, 19, 3, 5, 2, 3, 9]
+            }, {
+                label: 'Incorrect',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                data: [12, 19, 3, 5, 2, 3, 9]
+            }]
     }
     }),
     props: {
@@ -48,20 +72,45 @@ export default {
             default() {
                 return "Chart Title"
             }
+        },
+        subjects: {
+            type: Array,
+            required: true
         }
     },
     computed: {
         chardata: {
             get(){
-                return this.chartdata
+                return this.chartdata2
             },
             set(cdata){
-                this.chartdata = cdata;
+                this.chartdata2 = cdata;
             }
         }
     },
     mounted() {
-        
+        this.init()
+    },
+    methods: {
+        // Returns the number of qs correct for each subject sent into a single array 
+        getSubjectCorrect(){
+            
+        },
+        //Returns the number of q's incorrect for each subject sent into a single array
+        getSubjectsIncorrect(){
+
+        },
+        getSubjectNames(){
+
+        },
+        // TODO: write function that: Sets the charts data given an array of subject objects
+        setChartData(){
+
+        },
+        init()
+        {
+            this.setChartData()
+        }
     }
 }
 </script>
