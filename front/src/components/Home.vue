@@ -14,7 +14,7 @@
         </v-row>
             <v-spacer/>
             <v-divider/>
-        <v-btn x-large height=250  v-text="btn3" block :to="helloworld">
+        <v-btn x-large height=250  v-text="btn3" block :to="studybook">
         </v-btn>
     </v-container>
 </template>
@@ -26,10 +26,11 @@ export default {
     data:() => ({
         //routing
         quizlist: "/quizlist",
+        studybook: "/studybook",
         helloworld:"/helloworld",
         btn1: "Quiz List",
         btn2: "Create a Quiz",
-        btn3: "Results"
+        btn3: "StudyBook"
     })
 };
 </script>

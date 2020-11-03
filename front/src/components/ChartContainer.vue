@@ -5,49 +5,26 @@
             </v-card-title>
         </v-card>
         <TestChart2 v-bind:chartdata="setChartData()"></TestChart2>
+            <v-btn right v-on:click.native="showModal=true">Settings</v-btn>
+        <Modal v-model="showModal" title="Settings">
+            <ChartSettings medium></ChartSettings>
+        </Modal>
     </v-container>
 </template>
 <script>
-import TestChart2 from "./TestChart2"
+
+import TestChart2 from "./TestChart2";
+import ChartSettings from "./ChartSettings";
 export default {
     name: "ChartContainer",
-    components: {TestChart2},
+    components: {TestChart2, ChartSettings},
     data: () => ({
       //subjectCorrect: this.getSubjectCorrect(),
+      showModal: false,
       subjNames: ["this"],
-      chartdata: {
-      labels: ['"January', 'February', 'March', 'April', 'May', 'June'],
-      datasets: [
-        {
-          label: 'Data One',
-          data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-
-                'rgba(75, 192, 192, 1)',
-
-            ],
-            borderWidth: 1
-        },
-                {
-          label: 'Data One',
-          data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-
-                'rgba(255, 99, 132, 1)',
-
-            ],
-            borderWidth: 1
-        },
-      ]
-    },
+      subjectCorrect: [],
+      subjectTotal: [],
+      chartdata: {}
     }),
     props: {
         title: {
@@ -60,12 +37,6 @@ export default {
             type: Array,
             required: true
         },
-        subjectCorrect: {
-            type: Array
-        },
-        subjectTotal: {
-            type: Array
-        }
     },
     computed: {
         chardata: {
@@ -135,7 +106,7 @@ export default {
         },
         init()
         {
-            this.setChartData()
+            
         }
     }
 }

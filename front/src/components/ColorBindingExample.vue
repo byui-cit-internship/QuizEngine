@@ -1,12 +1,11 @@
-<template v-bind:color="SettingBGColor">
+<template>
     <v-container fluid style="text-align:left" color="rgb(255,0,0,0.25)">
-        <v-card v-bind:color="SettingBGColor">
+        <v-card></v-card>
        <v-row style="height: 25px;">
         </v-row>
-        <v-card height=25 v-text="btn1" block :to="quizlist">
-            <input type="color" value="bgColor" v-on:input="bgColorData = $event.target.value">Bar Color 1<input/>
-        </v-card>
-        
+        <v-btn v-bind:color="bgColor" x-large height=250 v-text="btn1" block :to="quizlist">
+        </v-btn>
+        <input type="color" value="bgColor" v-on:input="bgColor = $event.target.value"><input/>
         <v-row style="height: 25px;">
         </v-row>
             <v-spacer/>
@@ -19,7 +18,6 @@
             <v-divider/>
         <v-btn x-large height=250  v-text="btn3" block :to="helloworld">
         </v-btn>
-        </v-card>
     </v-container>
 </template>
 
@@ -34,10 +32,7 @@ export default {
         btn1: "Quiz List",
         btn2: "Create a Quiz",
         btn3: "Results",
-        defVar: jscolor,
-        SettingBGColor: "rgb(135, 145, 146, 0.57)",
-        barCorrectColor: "",
-        barIncorrectColor: ""
+        defVar: jscolor
     }),
     props: {
         bgColor: {
@@ -48,7 +43,6 @@ export default {
         updateBGColor(val)
         {
             this.bgColor = val
-            this.bgColorData = val
         }
     }
 };

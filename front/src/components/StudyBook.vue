@@ -4,6 +4,7 @@
             <v-card-title v-text="this.subjects"></v-card-title>
         </v-card>
         <ChartContainer v-bind:subjects="this.subjectInfo"></ChartContainer>
+
     </v-container>
 </template>
 
@@ -12,11 +13,14 @@ import ChartContainer from "./ChartContainer";
 import subjectData from "../assets/subjectsData.json";
 export default {
     name:"StudyBook",
-    components: { ChartContainer },
+    components: {
+         ChartContainer
+         },
     data:() => ({
         //routing
         chartTitle: "Test Chart",
-        subjectInfo: subjectData
+        subjectInfo: subjectData,
+        showModal:false
     }),
     props:{
         subjects:{
