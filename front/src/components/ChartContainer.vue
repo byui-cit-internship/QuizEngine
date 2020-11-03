@@ -4,7 +4,7 @@
             <v-card-title v-text="title">
             </v-card-title>
         </v-card>
-        <TestChart2 v-bind:chartdata="setChartData()"></TestChart2>
+        <TestChart2 v-bind:chartdata="this.getChartData()"></TestChart2>
             <v-btn right v-on:click.native="showModal=true">Settings</v-btn>
         <Modal v-model="showModal" title="Settings">
             <ChartSettings medium></ChartSettings>
@@ -48,10 +48,14 @@ export default {
             }
         }
     },
-    mounted() {
+    beforeMount() {
         this.init()
     },
     methods: {
+        getChartData()
+        {
+            return this.chartdata
+        },
         // Returns the number of qs correct for each subject sent into a single array 
         getSubjectCorrect(){
             let arrayCorrect = this.subjects.map((a) => a.correct);
@@ -106,7 +110,7 @@ export default {
         },
         init()
         {
-            
+            this.chartdata = this.setChartData()
         }
     }
 }
