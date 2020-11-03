@@ -44,6 +44,12 @@ export default new Router({
       name: "studybook",
       component: () => import("./components/StudyBook"),
       props: true
-    }
+    },
+    {
+      path: "/chartsettings",
+      name: "chartsettings",
+      component: () => import("./components/ChartSettings"),
+      props: true
+    },
   ]
 });
