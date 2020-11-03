@@ -7,14 +7,13 @@
         <TestChart2 v-bind:chartdata="chardata"></TestChart2>
     </v-container>
 </template>
-
 <script>
 import TestChart2 from "./TestChart2"
 export default {
     name: "ChartContainer",
     components: {TestChart2},
     data: () => ({
-      //subjectNames: this.getSubjectNames(),
+      subjectNames: this.getSubjectNames(),
       //subjectCorrect: this.getSubjectCorrect(),
       chartdata: {
       labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -50,7 +49,7 @@ export default {
       ]
     },
     chartdata2: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    labels: this.subjectNames,
             datasets: [{
                 label: 'Correct',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -94,18 +93,19 @@ export default {
     methods: {
         // Returns the number of qs correct for each subject sent into a single array 
         getSubjectCorrect(){
-            
+
         },
         //Returns the number of q's incorrect for each subject sent into a single array
         getSubjectsIncorrect(){
 
         },
         getSubjectNames(){
-
+            let array = this.subjects.map((a) => a.subject);
+            return array
         },
         // TODO: write function that: Sets the charts data given an array of subject objects
         setChartData(){
-
+            this.getSubjectNames
         },
         init()
         {

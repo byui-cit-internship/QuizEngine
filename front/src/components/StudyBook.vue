@@ -1,6 +1,9 @@
 <template>
     <v-container fluid style="text-align:left">
-        <ChartContainer></ChartContainer>
+        <v-card v-text="'subjects:' + this.subjectInfo">
+            <v-card-title v-text="this.subjects"></v-card-title>
+        </v-card>
+        <ChartContainer v-bind:subjects="this.subjectInfo"></ChartContainer>
     </v-container>
 </template>
 
@@ -23,7 +26,8 @@ export default {
     methods: {
         setSubjectInfo()
         {
-            this.subjects = this.subjectInfo
+            this.subjects = this.subjectData
+            return this.subjects
         },
         created()
         {
