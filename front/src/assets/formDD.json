@@ -1,0 +1,76 @@
+{
+    "title": {
+        "view": "text",
+        "label": "Quiz Title"
+    },
+    "description": {
+        "view": "text",
+        "label": "Quiz Description"
+    },
+    "questions": {
+        "view": "collection",
+        "label": "Questions",
+        "addable": "_addable",
+        "class": ["row--boxed"]
+    },
+    "questions[*]": {
+        "view": "group",
+        "label": "Question {_index}"
+    },
+    "questions[*].body": {
+        "view": "text",
+        "label": "Body"
+    },
+    "questions[*].answers": {
+        "view": "collection",
+        "label": "Answers",
+        "addable": "_addable",
+        "class": ["row--boxed"]
+    },
+    "questions[*].answers[*]": {
+        "view": "group",
+        "label": "Answer {_index}"
+    },
+    "questions[*].answers[*].body": {
+        "view": "text",
+        "label": "Body"
+    },
+    "subjects": {
+        "view": "collection",
+        "label": "Subjects",
+        "addable": "_addable"
+    },
+    "subjects[*]": {
+        "view": "text",
+        "label": "Subject {_index}"
+    },
+    "class": {
+        "view": "group",
+        "label": "Class"
+    },
+    "class.course": {
+        "view": "text",
+        "label": "Course"
+    },
+    "class.courseId": {
+        "view": "text",
+        "label": "Course ID"
+    },
+    "class.instructorId": {
+        "view": "text",
+        "label": "Instructor ID"
+    },
+    "class.section": {
+        "view": "text",
+        "label": "Section"
+    },
+    "difficulty": {
+        "view": "select",
+        "label": "Difficulty",
+        "options": [
+            "Easy",
+            "Medium",
+            "Hard"
+        ]
+    }
+}

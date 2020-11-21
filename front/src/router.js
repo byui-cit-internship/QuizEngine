@@ -42,7 +42,7 @@ export default new Router({
     {
       path: "/quizform",
       name: "quizform",
-      component: () => import("./components/QuizForm/QuizForm"),
+      component: () => import("./components/QuizForm"),
       props: true
     }
   ]

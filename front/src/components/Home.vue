@@ -27,7 +27,7 @@ export default {
         //routing
         quizlist: "/quizlist",
         helloworld:"/helloworld",
-        quizform: "/quizform/quizform",
+        quizform: "/quizform",
         btn1: "Quiz List",
         btn2: "Create a Quiz",
         btn3: "Results"
