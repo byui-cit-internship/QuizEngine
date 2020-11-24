@@ -30,6 +30,10 @@ export default {
           required: true
       }
   },
+  beforeMount()
+  {
+    this.$emit('update');
+  },
   mounted () {
     this.renderChart(this.chartdata, this.options)
   }

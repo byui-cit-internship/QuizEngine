@@ -1,0 +1,6 @@
+{
+    "correctColor": "rgba(75, 192, 192,0.25)",
+    "correctBorder":"rgba(75, 192, 192, 1)",
+    "incorrectColor":"rgba(255, 99, 132, 0.2)",
+    "incorrectBorder":"rgb(56, 255, 26)"
+}

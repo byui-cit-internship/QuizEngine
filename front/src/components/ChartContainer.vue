@@ -4,17 +4,18 @@
             <v-card-title v-text="title">
             </v-card-title>
         </v-card>
-        <TestChart2 v-bind:chartdata="this.getChartData()"></TestChart2>
+        <TestChart2 v-bind:chartdata="chartdata" :key="correctColor" v-on:update="setChartData()"></TestChart2>
+        {{correctColor}}
             <v-btn right v-on:click.native="showModal=true">Settings</v-btn>
-        <Modal v-model="showModal" title="Settings">
-            <ChartSettings medium></ChartSettings>
-        </Modal>
+            <ChartSettings v-show="showModal" medium v-bind:barCorrectColor.sync="correctColor"></ChartSettings>
     </v-container>
 </template>
 <script>
 
 import TestChart2 from "./TestChart2";
 import ChartSettings from "./ChartSettings";
+import quizColors from '../assets/quizColors';
+
 export default {
     name: "ChartContainer",
     components: {TestChart2, ChartSettings},
@@ -24,7 +25,12 @@ export default {
       subjNames: ["this"],
       subjectCorrect: [],
       subjectTotal: [],
-      chartdata: {}
+      chartdata: {},
+      correctColor: '',
+      correctBorder: 'rgba(75, 192, 192, 1)',
+      incorrectColor:'rgba(255, 99, 132, 0.2)',
+      incorrectBorder:'rgba(255, 99, 132, 1)',
+      colorSettings: quizColors
     }),
     props: {
         title: {
@@ -37,6 +43,9 @@ export default {
             type: Array,
             required: true
         },
+        // correctColor: {
+        //     type:String
+        // }
     },
     computed: {
         chardata: {
@@ -51,10 +60,37 @@ export default {
     beforeMount() {
         this.init()
     },
+    mounted(){
+        this.chartdata = this.setChartData();
+    },
     methods: {
+        writeSettings()
+        {
+            console.log("saved: " + this.colorSettings)
+        },
+        
+        reloadCHart()
+        {
+            console.log("Reloading the chart")
+        },
         getChartData()
         {
             return this.chartdata
+        },
+        loadColorSettings()
+        {
+            this.correctColor = this.colorSettings.correctColor;
+            console.log(this.colorSettings)
+            this.correctBorder = this.colorSettings.correctBorder;
+            this.incorrectColor = this.colorSettings.incorrectColor;
+            this.incorrectBorder = this.colorSettings.incorrectBorder;
+        },
+        setColorSettings()
+        {
+            this.colorSettings.correctColor = this.correctColor;
+            this.colorSettings.correctBorder = this.correctBorder;
+            this.colorSettings.incorrectColor = this.incorrectColor;
+            this.colorSettings.incorrectBorder = this.incorrectBorder;
         },
         // Returns the number of qs correct for each subject sent into a single array 
         getSubjectCorrect(){
@@ -88,28 +124,34 @@ export default {
             var correct = this.getSubjectCorrect()
             var incorrect = this.getSubjectsIncorrect()
             var chartData = {
-            labels: this.getSubjectNames(),
             datasets: [
                 {
                 label: 'Correct',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: this.correctColor,
+                borderColor: this.correctBorder,
                 borderWidth: 1,
                 data: correct
             }, {
                 label: 'Incorrect',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: this.incorrectColor,
+                borderColor: this.incorrectBorder,
                 borderWidth: 1,
                 data: incorrect
-            }]
+            }],
+            labels: this.getSubjectNames(),
+
     }
             console.log(this.chartdata2)
+            console.log("setting correct color in object: " + this.correctColor);
             console.log(this.getSubjectNames())
+            this.chartdata = chartData;
+            this.setColorSettings();
+            this.writeSettings();
             return chartData
         },
         init()
         {
+            this.loadColorSettings();
             this.chartdata = this.setChartData()
         }
     }
